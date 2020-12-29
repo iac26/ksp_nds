@@ -7,11 +7,15 @@ void graphics_sub_config();
 
 void graphics_sub_put_digit(unsigned short digit, unsigned short x, unsigned short y);
 
+void graphics_sub_put_slider(unsigned short x, unsigned short y);
+
 void graphics_sub_put_speed(unsigned int number);
 
 void graphics_sub_put_alt(unsigned int number);
 
-void graphics_sub_put_nav(float angle);
+void graphics_sub_put_nav(float angle, float scale);
+
+void graphics_sub_put_hor(float angle, float scale, int shift);
 
 
 #endif
