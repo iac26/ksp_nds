@@ -6,7 +6,6 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "shared.h"
 #include "numbers.h"
 #include "backplate.h"
 #include "fusee.h"
@@ -121,7 +120,7 @@ static void number_to_digits(unsigned short digits[6], unsigned int number) {
 }
 
 
-#define SPEED_POS 4
+#define SPEED_POS 25
 
 void graphics_sub_put_speed(unsigned int number) {
 
@@ -130,15 +129,15 @@ void graphics_sub_put_speed(unsigned int number) {
 
 	number_to_digits(digit, number);
 
-	graphics_sub_put_digit(digit[0], SPEED_POS, 6);
-	graphics_sub_put_digit(digit[1], SPEED_POS, 8);
-	graphics_sub_put_digit(digit[2], SPEED_POS, 10);
-	graphics_sub_put_digit(digit[3], SPEED_POS, 12);
-	graphics_sub_put_digit(digit[4], SPEED_POS, 14);
-	graphics_sub_put_digit(digit[5], SPEED_POS, 16);
+	graphics_sub_put_digit(digit[0], SPEED_POS, 16);
+	graphics_sub_put_digit(digit[1], SPEED_POS, 14);
+	graphics_sub_put_digit(digit[2], SPEED_POS, 12);
+	graphics_sub_put_digit(digit[3], SPEED_POS, 10);
+	graphics_sub_put_digit(digit[4], SPEED_POS, 8);
+	graphics_sub_put_digit(digit[5], SPEED_POS, 6);
 }
 
-#define ALT_POS 10
+#define ALT_POS 19
 
 void graphics_sub_put_alt(unsigned int number) {
 
@@ -147,12 +146,12 @@ void graphics_sub_put_alt(unsigned int number) {
 
 	number_to_digits(digit, number);
 
-	graphics_sub_put_digit(digit[0], ALT_POS, 6);
-	graphics_sub_put_digit(digit[1], ALT_POS, 8);
-	graphics_sub_put_digit(digit[2], ALT_POS, 10);
-	graphics_sub_put_digit(digit[3], ALT_POS, 12);
-	graphics_sub_put_digit(digit[4], ALT_POS, 14);
-	graphics_sub_put_digit(digit[5], ALT_POS, 16);
+	graphics_sub_put_digit(digit[0], ALT_POS, 16);
+	graphics_sub_put_digit(digit[1], ALT_POS, 14);
+	graphics_sub_put_digit(digit[2], ALT_POS, 12);
+	graphics_sub_put_digit(digit[3], ALT_POS, 10);
+	graphics_sub_put_digit(digit[4], ALT_POS, 8);
+	graphics_sub_put_digit(digit[5], ALT_POS, 6);
 }
 
 
@@ -191,7 +190,7 @@ void graphics_sub_put_slider(unsigned short x, unsigned short y) {
 
 
 #define WIDTH		  (128)
-#define ROT_CENTER_X  (166)
+#define ROT_CENTER_X  (90)
 #define ROT_CENTER_Y  (96)
 
 #define MARGIN_X(scale) (ROT_CENTER_X*(scale)-WIDTH/2)
@@ -215,12 +214,6 @@ void graphics_sub_put_nav(float angle, float scale) {
 }
 
 
-#define WIDTH		  (128)
-#define ROT_CENTER_X  (166)
-#define ROT_CENTER_Y  (96)
-
-#define MARGIN_X(scale) (ROT_CENTER_X*(scale)-WIDTH/2)
-#define MARGIN_Y(scale) (ROT_CENTER_Y*(scale)-WIDTH/2)
 
 void graphics_sub_put_hor(float angle, float scale, int shift) {
 
