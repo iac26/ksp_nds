@@ -78,3 +78,4 @@ bool grit_prep_gfx(GritRec *gr)
 
 ![alt text](https://raw.githubusercontent.com/iac26/ksp_nds/main/medias/ss_01.png "photo")
 
+
