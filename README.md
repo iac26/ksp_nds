@@ -3,6 +3,9 @@
 
 ### modification a faire dans GRIT
 
+il faut modifier cette fontion dans grit/libgrit/grit_prep.cpp
+pour que l'assemblage des palettes fonctionne!
+
 ```C
 bool grit_prep_gfx(GritRec *gr)
 {
@@ -39,11 +42,12 @@ bool grit_prep_gfx(GritRec *gr)
 	}
 	else
 		memcpy(dstD, srcD, dstS);
-
+	// DEBUT des modifications
 	for(int i = 0; i < dstS; i++) {
 		if(dstD[i])
 			dstD[i] += gr->gfxOffset;
 	}
+	// FIN des modifications
 	RECORD rec= { 1, dstS, dstD};
 
 	if( BYTE_ORDER == BIG_ENDIAN && gr->gfxBpp > 8 )
