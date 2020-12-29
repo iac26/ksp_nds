@@ -11,5 +11,7 @@ void graphics_sub_put_speed(unsigned int number);
 
 void graphics_sub_put_alt(unsigned int number);
 
+void graphics_sub_put_nav(float angle);
+
 
 #endif
