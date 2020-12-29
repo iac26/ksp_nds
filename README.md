@@ -1,5 +1,15 @@
 # ksp_nds
 
+### utilisation de la memoire graphique
+
+cet outil permet de designer facilement le placement dans la memoire:
+https://mtheall.com/vram.html#SUB=1&T0=1&NT0=320&MB0=11&TB0=0&S0=0&T1=1&NT1=64&MB1=14&TB1=2&S1=0&T2=5&MB2=3&S2=0&T3=5&MB3=4&S3=0
+
+
+
+
+
+
 
 ### modification a faire dans GRIT
 
@@ -62,3 +72,8 @@ bool grit_prep_gfx(GritRec *gr)
 }
 
 ```
+
+
+### photo
+
+[]
