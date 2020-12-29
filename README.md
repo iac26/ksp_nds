@@ -1,4 +1,4 @@
-# ksp_nds
+# KSP for NDS
 
 ### utilisation de la memoire graphique
 
