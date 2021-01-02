@@ -11,6 +11,8 @@
 #include "fusee.h"
 #include "horizon.h"
 
+#include "positions.h"
+
 
 static unsigned short * overlay_map = 0;
 
@@ -47,6 +49,10 @@ void graphics_sub_init() {
 #define BG1_PALETTE_OFS		64
 #define BG2_PALETTE_OFS		128
 #define BG3_PALETTE_OFS		192
+
+
+
+#define EMPTY_TILE	36
 
 
 
@@ -97,7 +103,7 @@ void graphics_sub_config() {
 
 	//create empty tile
 
-	memset(overlay_map, 36, 2*backplateMapLen); // fill with empty tiles
+	memset(overlay_map, EMPTY_TILE, 2*backplateMapLen); // fill with empty tiles
 
 }
 
@@ -174,7 +180,25 @@ void graphics_sub_put_digit(unsigned short digit, unsigned short x, unsigned sho
 
 #define SLIDER_START 39
 
-void graphics_sub_put_slider(unsigned short x, unsigned short y) {
+void graphics_sub_put_slider(unsigned short x) {
+
+	static unsigned short prev_x = 0;
+	unsigned short y = SLIDER_POS_Y;
+	//erase prev position
+	overlay_map[MAP_32x32_POS(prev_x+0, y+0)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+1, y+0)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+2, y+0)] = EMPTY_TILE;
+
+	overlay_map[MAP_32x32_POS(prev_x+0, y+1)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+1, y+1)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+2, y+1)] = EMPTY_TILE;
+
+	overlay_map[MAP_32x32_POS(prev_x+0, y+2)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+1, y+2)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+2, y+2)] = EMPTY_TILE;
+
+	//set new tiles
+
 	overlay_map[MAP_32x32_POS(x+0, y+0)] = SLIDER_START+0;
 	overlay_map[MAP_32x32_POS(x+1, y+0)] = SLIDER_START+1;
 	overlay_map[MAP_32x32_POS(x+2, y+0)] = SLIDER_START+2;
@@ -186,6 +210,53 @@ void graphics_sub_put_slider(unsigned short x, unsigned short y) {
 	overlay_map[MAP_32x32_POS(x+0, y+2)] = SLIDER_START+2*DIGIT_ROW_SIZE+0;
 	overlay_map[MAP_32x32_POS(x+1, y+2)] = SLIDER_START+2*DIGIT_ROW_SIZE+1;
 	overlay_map[MAP_32x32_POS(x+2, y+2)] = SLIDER_START+2*DIGIT_ROW_SIZE+2;
+
+	prev_x = x;
+}
+
+
+#define AP_START		42
+#define AP_SKIP			3
+#define AP_POS_SKIP		4
+#define AP_POS_START	6
+#define AP_POS_Y		2
+
+void graphics_sub_set_ap(AP_MODE_t mode) {
+
+	static unsigned short prev_x = 0;
+	unsigned short y = AP_POS_Y;
+	unsigned short x = AP_POS_START+AP_POS_SKIP*mode;
+
+
+	//erase prev tiles
+	overlay_map[MAP_32x32_POS(prev_x+0, y+0)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+1, y+0)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+2, y+0)] = EMPTY_TILE;
+
+	overlay_map[MAP_32x32_POS(prev_x+0, y+1)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+1, y+1)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+2, y+1)] = EMPTY_TILE;
+
+	overlay_map[MAP_32x32_POS(prev_x+0, y+2)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+1, y+2)] = EMPTY_TILE;
+	overlay_map[MAP_32x32_POS(prev_x+2, y+2)] = EMPTY_TILE;
+
+	//set new tiles
+
+	overlay_map[MAP_32x32_POS(x+0, y+0)] = AP_SKIP*mode + AP_START+0;
+	overlay_map[MAP_32x32_POS(x+1, y+0)] = AP_SKIP*mode + AP_START+1;
+	overlay_map[MAP_32x32_POS(x+2, y+0)] = AP_SKIP*mode + AP_START+2;
+
+	overlay_map[MAP_32x32_POS(x+0, y+1)] = AP_SKIP*mode + AP_START+DIGIT_ROW_SIZE+0;
+	overlay_map[MAP_32x32_POS(x+1, y+1)] = AP_SKIP*mode + AP_START+DIGIT_ROW_SIZE+1;
+	overlay_map[MAP_32x32_POS(x+2, y+1)] = AP_SKIP*mode + AP_START+DIGIT_ROW_SIZE+2;
+
+	overlay_map[MAP_32x32_POS(x+0, y+2)] = AP_SKIP*mode + AP_START+2*DIGIT_ROW_SIZE+0;
+	overlay_map[MAP_32x32_POS(x+1, y+2)] = AP_SKIP*mode + AP_START+2*DIGIT_ROW_SIZE+1;
+	overlay_map[MAP_32x32_POS(x+2, y+2)] = AP_SKIP*mode + AP_START+2*DIGIT_ROW_SIZE+2;
+
+	prev_x = x;
+
 }
 
 
