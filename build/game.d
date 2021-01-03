@@ -60,7 +60,10 @@ game.o: \
  /opt/devkitpro/libnds/include/nds/arm9/video.h \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
- /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/game.h
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/game.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/input.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/graphics_main.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/graphics_sub.h
 /opt/devkitpro/libnds/include/nds.h:
 /opt/devkitpro/libnds/include/nds/libversion.h:
 /opt/devkitpro/libnds/include/nds/ndstypes.h:
@@ -122,3 +125,6 @@ game.o: \
 /opt/devkitpro/libnds/include/nds/arm9/videoGL.h:
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/game.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/input.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/graphics_main.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/graphics_sub.h:
