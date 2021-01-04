@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "game.h"
+#include "physics.h"
 
 
 
@@ -35,7 +36,10 @@ void game_splash(GAME_STATE_t * state) {
 void game_ingame(GAME_STATE_t * state) {
 	//update game dynamics
 
+	IVEC_t orb[1];
+	ROCKET_STATE_t x0 = {0, -0.5, 25, 0, 0, 0};
 
+	physics_predict_orbit(orb, x0, 1);
 
 	//update display
 
@@ -45,6 +49,8 @@ void game_ingame(GAME_STATE_t * state) {
 	graphics_sub_put_alt(0);
 	graphics_sub_put_nav(0, 2);
 	graphics_sub_put_hor(1.5, 0.2, -30);
+
+	graphics_main_path(orb, 1);
 
 }
 

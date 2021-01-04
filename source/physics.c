@@ -4,23 +4,11 @@
 
 #include <math.h>
 
-typedef struct {
-	float x;
-	float xp;
-	float y;
-	float yp;
-	float a;
-	float ap;
-}ROCKET_STATE_t;
 
-typedef struct {
-	float Ft;
-	float Tt;
-}ROCKET_INPUT_t;
 
 #define ROCKET_STATE_N 6
 
-#define TIME_STEP	0.1
+#define TIME_STEP	1
 
 
 
@@ -30,6 +18,18 @@ static ROCKET_STATE_t rocket_integrate_rk4(ROCKET_STATE_t x, ROCKET_INPUT_t u, f
 
 static ROCKET_STATE_t rocket_model(ROCKET_STATE_t x, ROCKET_INPUT_t u);
 
+
+//exported functions
+//result must be N long
+void physics_predict_orbit( IVEC_t * result, ROCKET_STATE_t x, int N) {
+	ROCKET_INPUT_t u = {0, 0};
+
+	for(int i = 0; i < N; i++) {
+		x = rocket_integrate_rk4(x, u, TIME_STEP, rocket_model);
+		result[i].x = x.x+128;
+		result[i].y = x.y+96;
+	}
+}
 
 
 //STATIC FUNCTIONS

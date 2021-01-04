@@ -5,7 +5,12 @@
 #include <math.h>
 #include <stdio.h>
 
+
 #include "splash.h"
+
+
+
+static unsigned short * simulated_fb = 0;
 
 void graphics_main_init() {
 	// everything in vram C
@@ -32,6 +37,8 @@ void graphics_main_config_splash() {
 	dmaCopy(splashPal, BG_PALETTE, splashPalLen);
 }
 
+
+//simulated framebuffer for tests
 void graphics_main_config_ingame() {
 	//background 3
 	BGCTRL[3] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
@@ -42,6 +49,21 @@ void graphics_main_config_ingame() {
 	REG_BG3PB = 0;
 	REG_BG3PD = 256;
 
-	dmaCopy(splashBitmap, BG_BMP_RAM(0), splashBitmapLen);
-	dmaCopy(splashPal, BG_PALETTE, splashPalLen);
+	unsigned short * pal = BG_PALETTE;
+
+	simulated_fb = BG_BMP_RAM(0);
+
+	pal[0] = RGB15(0, 0, 0);
+	pal[1] = RGB15(31, 31, 31);
+	pal[2] = RGB15(0, 15, 0);
+
+	memset(simulated_fb, 0, 256*192);
+}
+
+#define FB_IX(x, y) ((x) + (y)*256)
+
+void graphics_main_path(IVEC_t * pos, int len) {
+	for(int i = 0; i < len; i++) {
+		*(simulated_fb+FB_IX(pos[i].x, pos[i].y)) = 1;
+	}
 }
