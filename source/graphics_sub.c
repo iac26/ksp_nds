@@ -10,6 +10,7 @@
 #include "backplate.h"
 #include "fusee.h"
 #include "horizon.h"
+#include "splash2.h"
 
 #include "positions.h"
 
@@ -51,12 +52,29 @@ void graphics_sub_init() {
 #define BG3_PALETTE_OFS		192
 
 
+#define BG3_BMP_SPLASH	4
+
+
 
 #define EMPTY_TILE	36
 
+void graphics_sub_config_splash() {
 
+	//background 3
+	BGCTRL_SUB[3] = BG_BMP_BASE(BG3_BMP_SPLASH) | (u16) BgSize_B8_256x256;
 
-void graphics_sub_config() {
+	//Affine Marix Transformation
+	REG_BG3PA_SUB = 256;
+	REG_BG3PC_SUB = 0;
+	REG_BG3PB_SUB = 0;
+	REG_BG3PD_SUB = 256;
+
+	dmaCopy(splash2Bitmap, BG_BMP_RAM_SUB(BG3_BMP_SPLASH), splash2BitmapLen);
+	dmaCopy(splash2Pal, BG_PALETTE_SUB, splash2PalLen);
+
+}
+
+void graphics_sub_config_ingame() {
 
 	//background 3
 	BGCTRL_SUB[3] = BG_BMP_BASE(BG3_BMP) | (u16) BgSize_B8_128x128;
@@ -243,6 +261,8 @@ void graphics_sub_set_ap(AP_MODE_t mode) {
 
 	//set new tiles
 
+	if(mode == AP_OFF) return;
+
 	overlay_map[MAP_32x32_POS(x+0, y+0)] = AP_SKIP*mode + AP_START+0;
 	overlay_map[MAP_32x32_POS(x+1, y+0)] = AP_SKIP*mode + AP_START+1;
 	overlay_map[MAP_32x32_POS(x+2, y+0)] = AP_SKIP*mode + AP_START+2;
@@ -254,6 +274,7 @@ void graphics_sub_set_ap(AP_MODE_t mode) {
 	overlay_map[MAP_32x32_POS(x+0, y+2)] = AP_SKIP*mode + AP_START+2*DIGIT_ROW_SIZE+0;
 	overlay_map[MAP_32x32_POS(x+1, y+2)] = AP_SKIP*mode + AP_START+2*DIGIT_ROW_SIZE+1;
 	overlay_map[MAP_32x32_POS(x+2, y+2)] = AP_SKIP*mode + AP_START+2*DIGIT_ROW_SIZE+2;
+
 
 	prev_x = x;
 

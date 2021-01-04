@@ -29,7 +29,7 @@ typedef struct {
 	GAME_FSM_t game_fsm;
 	FLIGHT_FSM_t flight_fsm;
 	CONTROLS_t control_input;
-
+	int needs_transition;
 
 }GAME_STATE_t;
 

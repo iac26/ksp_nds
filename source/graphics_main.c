@@ -17,8 +17,22 @@ void graphics_main_init() {
 }
 
 
-void graphics_main_config() {
+void graphics_main_config_splash() {
 
+	//background 3
+	BGCTRL[3] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+
+	//Affine Marix Transformation
+	REG_BG3PA = 256;
+	REG_BG3PC = 0;
+	REG_BG3PB = 0;
+	REG_BG3PD = 256;
+
+	dmaCopy(splashBitmap, BG_BMP_RAM(0), splashBitmapLen);
+	dmaCopy(splashPal, BG_PALETTE, splashPalLen);
+}
+
+void graphics_main_config_ingame() {
 	//background 3
 	BGCTRL[3] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
 

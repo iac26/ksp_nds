@@ -47,16 +47,16 @@
 
 //off
 
-#define AP_OFF_X	(48)
-#define AP_OFF_Y	(16)
+#define AP_KILL_ROT_X	(48)
+#define AP_KILL_ROT_Y	(16)
 
 
-#define AP_OFF_X1	(AP_OFF_X)
-#define AP_OFF_X2	(AP_OFF_X+AP_BTN_W)
-#define AP_OFF_Y1	(AP_OFF_Y)
-#define AP_OFF_Y2	(AP_OFF_Y+AP_BTN_H)
+#define AP_KILL_ROT_X1	(AP_KILL_ROT_X)
+#define AP_KILL_ROT_X2	(AP_KILL_ROT_X+AP_BTN_W)
+#define AP_KILL_ROT_Y1	(AP_KILL_ROT_Y)
+#define AP_KILL_ROT_Y2	(AP_KILL_ROT_Y+AP_BTN_H)
 
-#define AP_OFF_INSIDE(x, y)  INSIDE(AP_OFF_X1, AP_OFF_X2, AP_OFF_Y1, AP_OFF_Y2, x, y)
+#define AP_KILL_ROT_INSIDE(x, y)  INSIDE(AP_KILL_ROT_X1, AP_KILL_ROT_X2, AP_KILL_ROT_Y1, AP_KILL_ROT_Y2, x, y)
 
 //prograde
 

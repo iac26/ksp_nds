@@ -3,7 +3,8 @@
 
 void graphics_main_init();
 
-void graphics_main_config();
+void graphics_main_config_ingame();
+void graphics_main_config_splash();
 
 
 #endif

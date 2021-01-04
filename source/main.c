@@ -26,34 +26,26 @@ int main(void) {
 
 	graphics_main_init();
 	graphics_sub_init();
-	graphics_main_config();
-	graphics_sub_config();
+
 
 	//do the right configuration for the main and sub screens
 
 
-	for(;;) {
+	while(1) {
+		swiWaitForVBlank();
 		input_read(&(game_state.control_input));
 		switch(game_state.game_fsm) {
 		case SPLASH:
 			game_splash(&game_state);
-			//graphics sub
-			//graphics main
 			break;
 		case INGAME:
 			game_ingame(&game_state);
-			//graphics sub
-			//graphics main
 			break;
 		case END:
 			game_end(&game_state);
-			//graphics sub
-			//graphics main
 			break;
 		default:
 			game_end(&game_state);
-			//graphics sub
-			//graphics main
 			break;
 		}
 	}

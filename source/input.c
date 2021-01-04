@@ -36,10 +36,8 @@ void input_read(CONTROLS_t * control) {
 		handle_touch_down(control);
 	}
 
-	control->l_hold = keysH & KEY_LEFT;
-	control->r_hold = keysH & KEY_RIGHT;
-	control->u_hold = keysH & KEY_UP;
-	control->d_hold = keysH & KEY_DOWN;
+	control->keysD = keysD;
+	control->keysH = keysH;
 
 
 
@@ -75,16 +73,16 @@ static void handle_touch_down(CONTROLS_t * control) {
 
 	touchRead(&touch);
 
-	if(AP_OFF_INSIDE(touch.px, touch.py)) {
-		control->ap_mode = AP_OFF;
+	if(AP_KILL_ROT_INSIDE(touch.px, touch.py)) {
+		control->ap_mode = control->ap_mode == AP_KILL_ROT?AP_OFF:AP_KILL_ROT;
 	} else if (AP_PROG_INSIDE(touch.px, touch.py)) {
-		control->ap_mode = AP_PROGRADE;
+		control->ap_mode = control->ap_mode == AP_PROGRADE?AP_OFF:AP_PROGRADE;
 	} else if (AP_RETR_INSIDE(touch.px, touch.py)) {
-		control->ap_mode = AP_RETROGRADE;
+		control->ap_mode = control->ap_mode == AP_RETROGRADE?AP_OFF:AP_RETROGRADE;
 	} else if (AP_RAD_INSIDE(touch.px, touch.py)) {
-		control->ap_mode = AP_RADIAL;
+		control->ap_mode = control->ap_mode == AP_RADIAL?AP_OFF:AP_RADIAL;
 	} else if (AP_ARAD_INSIDE(touch.px, touch.py)) {
-		control->ap_mode = AP_ANTIRADIAL;
+		control->ap_mode = control->ap_mode == AP_ANTIRADIAL?AP_OFF:AP_ANTIRADIAL;
 	}
 
 
