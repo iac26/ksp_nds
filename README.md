@@ -83,3 +83,17 @@ Splash screen
 Ingame first prototype
 
 
+## done list
+* autopilot
+* GUI prototype
+** test
+* splashscreen
+* 
+
+## todo list
+* GUI cleanup
+* RK4 in fixed point
+
+
+## problems list
+* Touchscreen works on the simulator but not on the NDS
