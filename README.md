@@ -85,14 +85,19 @@ Ingame first prototype
 
 ## done list
 * autopilot
-* GUI prototype
-** test
+* GUI numbers
+* GUI rocket with ajustable flame
+* GUI horizon
+* GUI buttons for autopilot
 * splashscreen
-* 
+* Game logic
 
 ## todo list
 * GUI cleanup
 * RK4 in fixed point
+* Something with the abort button
+* Crash detection and crash screen
+
 
 
 ## problems list
