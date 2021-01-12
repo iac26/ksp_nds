@@ -33,8 +33,8 @@ void graphics_main_config_splash() {
 	REG_BG3PB = 0;
 	REG_BG3PD = 256;
 
-	dmaCopy(splashBitmap, BG_BMP_RAM(0), splashBitmapLen);
-	dmaCopy(splashPal, BG_PALETTE, splashPalLen);
+	swiCopy(splashBitmap, BG_BMP_RAM(0), splashBitmapLen/2);
+	swiCopy(splashPal, BG_PALETTE, splashPalLen/2);
 }
 
 
@@ -64,6 +64,6 @@ void graphics_main_config_ingame() {
 
 void graphics_main_path(IVEC_t * pos, int len) {
 	for(int i = 0; i < len; i++) {
-		*(simulated_fb+FB_IX(pos[i].x, pos[i].y)) = 1;
+		simulated_fb[FB_IX(pos[i].x, pos[i].y)/2] = pos[i].x%2?1<<8:1;
 	}
 }

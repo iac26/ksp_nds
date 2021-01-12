@@ -26,11 +26,16 @@
 #define SLIDER_POS_X	(3)
 #define SLIDER_POS_W	(23)
 
+#define SLIDER_POS_MAX 	(SLIDER_POS_X+SLIDER_POS_W)
+#define SLIDER_POS_MIN 	(SLIDER_POS_X)
+
 #define SLIDER_POS_Y	(19)
 
 #define SLIDER_POS(x)	 (((x) - SLIDER_X)*SLIDER_POS_W/SLIDER_W+SLIDER_POS_X)
 
 #define SLIDER_VAL(x)	 (((x) - SLIDER_X)*256/SLIDER_W)
+
+#define SLIDER_POS2VAL(p)	(((p) - SLIDER_POS_X)*256/SLIDER_POS_W)
 
 
 

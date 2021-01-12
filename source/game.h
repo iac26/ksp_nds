@@ -6,6 +6,7 @@
 #include "input.h"
 #include "graphics_main.h"
 #include "graphics_sub.h"
+#include "physics.h"
 
 
 typedef enum {
@@ -29,7 +30,7 @@ typedef struct {
 	GAME_FSM_t game_fsm;
 	FLIGHT_FSM_t flight_fsm;
 	CONTROLS_t control_input;
-	int needs_transition;
+	ROCKET_STATE_t rocket;
 
 }GAME_STATE_t;
 
