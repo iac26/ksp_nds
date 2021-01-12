@@ -74,8 +74,12 @@ bool grit_prep_gfx(GritRec *gr)
 ```
 
 
-### photo
+### photos
 
 ![alt text](https://github.com/iac26/ksp_nds/blob/main/media/ss_01.png "photo")
+Splash screen
+
+![alt text](https://github.com/iac26/ksp_nds/blob/main/media/ss_02.png "photo")
+Ingame first prototype
 
 
