@@ -3,6 +3,12 @@
 
 #include "input.h"
 
+
+/*
+ * REQUIRES MODIFIED GRIT
+ *
+ */
+
 void graphics_sub_init();
 
 void graphics_sub_config_ingame();
