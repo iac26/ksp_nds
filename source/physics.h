@@ -46,7 +46,7 @@ typedef struct {
 #define ROCKET_MASS		(10)
 #define ROCKET_INV_MASS	(1/(float)ROCKET_MASS)
 
-#define ROCKET_THRUST (0.02)
+#define ROCKET_THRUST (0.01)
 
 #define ROCKET_CORRECT_ANGLE(a) ((a)+M_PI/2)
 

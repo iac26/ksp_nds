@@ -120,6 +120,7 @@ static ROCKET_STATE_t rocket_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	return dx;
 }
 
+//CREATE A FIXED POINT MODEL
 static ROCKET_STATE_t rocket_model(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	float GM = 1e3;
 	ROCKET_STATE_t dx;

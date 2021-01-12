@@ -83,7 +83,7 @@ float auto_pilot(GAME_STATE_t * state) {
 		break;
 	}
 	float err = 0;
-	float kpp = 0.5;
+	float kpp = 1;
 	float kpv = 1;
 	float perr = 0;
 	if(mode == ANGLE) {
