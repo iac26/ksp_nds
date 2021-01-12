@@ -58,8 +58,13 @@ ROCKET_STATE_t physics_step_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u);
 ROCKET_STATE_t physics_step_grav(ROCKET_STATE_t x, ROCKET_INPUT_t u);
 
 float physics_get_phi(ROCKET_STATE_t x);
+float physics_get_r(ROCKET_STATE_t x);
+float physics_get_vel(ROCKET_STATE_t x);
+float physics_get_theta(ROCKET_STATE_t x);
 
 void physics_world_boundary(ROCKET_STATE_t * x);
+
+void physics_angle_reach(float * subject, float target);
 
 
 

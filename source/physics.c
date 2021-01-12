@@ -70,6 +70,39 @@ float physics_get_phi(ROCKET_STATE_t x) {
 
 }
 
+float physics_get_r(ROCKET_STATE_t x) {
+	float vx = -EARTH_X+x.x;
+	float vy = -EARTH_Y+x.y;
+
+
+	float r = sqrt(vy*vy+ vx*vx);
+
+	return r;
+}
+
+float physics_get_vel(ROCKET_STATE_t x) {
+
+	float vel = sqrt(x.xp*x.xp+x.yp*x.yp);
+
+	return vel;
+}
+
+float physics_get_theta(ROCKET_STATE_t x) {
+	float theta = atan2(x.xp, -x.yp);
+	return theta;
+}
+
+void physics_angle_reach(float * subject, float target) {
+	if(*subject < target) {
+		while (*subject < target-M_PI) {
+			*subject += 2*M_PI;
+		}
+	} else {
+		while (*subject > target+M_PI) {
+			*subject -= 2*M_PI;
+		}
+	}
+}
 
 //STATIC FUNCTIONS
 
@@ -81,7 +114,7 @@ static ROCKET_STATE_t rocket_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	dx.a = x.ap;
 
 	dx.xp = sin(x.a)*u.Ft*ROCKET_INV_MASS;
-	dx.yp = cos(x.a)*u.Ft*ROCKET_INV_MASS;
+	dx.yp = -cos(x.a)*u.Ft*ROCKET_INV_MASS;
 	dx.ap = u.Tt*ROCKET_INV_INERTIA;
 
 	return dx;

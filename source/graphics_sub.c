@@ -8,7 +8,9 @@
 
 #include "numbers.h"
 #include "backplate.h"
-#include "fusee.h"
+#include "fusee0.h"
+#include "fusee1.h"
+#include "fusee2.h"
 #include "horizon.h"
 #include "splash2.h"
 
@@ -42,9 +44,12 @@ void graphics_sub_init() {
 #define BG1_TILE	2
 #define BG1_MAP 	14
 
-#define BG2_BMP		3
+#define BG2_BMP0	4
+#define BG2_BMP1 	5
+#define BG2_BMP2	6
 
-#define BG3_BMP 	4
+#define BG3_BMP 	3
+
 
 #define BG0_PALETTE_OFS		0
 #define BG1_PALETTE_OFS		64
@@ -89,7 +94,7 @@ void graphics_sub_config_ingame() {
 	swiCopy(horizonPal, BG_PALETTE_SUB+BG3_PALETTE_OFS, horizonPalLen/2);
 
 	//background 2
-	BGCTRL_SUB[2] = BG_BMP_BASE(BG2_BMP) | (u16) BgSize_B8_128x128;
+	BGCTRL_SUB[2] = BG_BMP_BASE(BG2_BMP0) | (u16) BgSize_B8_128x128;
 
 	//Affine Marix Transformation
 	REG_BG2PA_SUB = 256;
@@ -97,8 +102,10 @@ void graphics_sub_config_ingame() {
 	REG_BG2PB_SUB = 0;
 	REG_BG2PD_SUB = 256;
 
-	swiCopy(fuseeBitmap, BG_BMP_RAM_SUB(BG2_BMP), fuseeBitmapLen/2);
-	swiCopy(fuseePal, BG_PALETTE_SUB+BG2_PALETTE_OFS, fuseePalLen/2);
+	swiCopy(fusee0Bitmap, BG_BMP_RAM_SUB(BG2_BMP0), fusee0BitmapLen/2);
+	swiCopy(fusee1Bitmap, BG_BMP_RAM_SUB(BG2_BMP1), fusee1BitmapLen/2);
+	swiCopy(fusee2Bitmap, BG_BMP_RAM_SUB(BG2_BMP2), fusee2BitmapLen/2);
+	swiCopy(fusee0Pal, BG_PALETTE_SUB+BG2_PALETTE_OFS, fusee0PalLen/2);
 
 
 	//background 1
@@ -123,6 +130,30 @@ void graphics_sub_config_ingame() {
 
 	memset(overlay_map, EMPTY_TILE, 2*backplateMapLen); // fill with empty tiles
 
+}
+
+void graphics_sub_rocket_ingame(int rocket) {
+	static int prev_rocket = 0;
+	if (rocket != prev_rocket) {
+		//we use dmaCopy here to avoid cpu overhead
+		switch (rocket) {
+		case 0:
+			BGCTRL_SUB[2] = BG_BMP_BASE(BG2_BMP0) | (u16) BgSize_B8_128x128;
+			dmaCopy(fusee0Pal, BG_PALETTE_SUB+BG2_PALETTE_OFS, fusee0PalLen);
+			break;
+		case 1:
+			BGCTRL_SUB[2] = BG_BMP_BASE(BG2_BMP1) | (u16) BgSize_B8_128x128;
+			dmaCopy(fusee1Pal, BG_PALETTE_SUB+BG2_PALETTE_OFS, fusee1PalLen);
+			break;
+		case 2:
+			BGCTRL_SUB[2] = BG_BMP_BASE(BG2_BMP2) | (u16) BgSize_B8_128x128;
+			dmaCopy(fusee2Pal, BG_PALETTE_SUB+BG2_PALETTE_OFS, fusee2PalLen);
+			break;
+		default:
+			break;
+		}
+		prev_rocket = rocket;
+	}
 }
 
 

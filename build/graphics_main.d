@@ -62,7 +62,8 @@ graphics_main.o: \
  /opt/devkitpro/libnds/include/nds/arm9/video.h \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
- /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/splash.h
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/splash.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/planets.h
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/graphics_main.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/physics.h:
 /opt/devkitpro/libnds/include/nds.h:
@@ -126,3 +127,4 @@ graphics_main.o: \
 /opt/devkitpro/libnds/include/nds/arm9/videoGL.h:
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/splash.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/planets.h:

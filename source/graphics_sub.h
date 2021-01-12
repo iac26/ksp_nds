@@ -7,6 +7,8 @@ void graphics_sub_init();
 
 void graphics_sub_config_ingame();
 
+void graphics_sub_rocket_ingame(int rocket);
+
 void graphics_sub_config_splash();
 
 void graphics_sub_put_digit(unsigned short digit, unsigned short x, unsigned short y);

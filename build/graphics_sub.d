@@ -64,7 +64,9 @@ graphics_sub.o: \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/numbers.h \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/backplate.h \
- /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee0.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee1.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee2.h \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/horizon.h \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/splash2.h \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/positions.h
@@ -132,7 +134,9 @@ graphics_sub.o: \
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/numbers.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/backplate.h:
-/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee0.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee1.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee2.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/horizon.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/splash2.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/positions.h:

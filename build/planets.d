@@ -1,0 +1,1 @@
+planets.o: planets.s
