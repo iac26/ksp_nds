@@ -63,7 +63,7 @@ void graphics_main_config_ingame() {
 	memset(simulated_fb, 0, 256*192);
 
 
-	BGCTRL[3] = BG_BMP_BASE(2) | (u16) BgSize_B8_256x256;
+	BGCTRL[3] = BG_BMP_BASE(3) | (u16) BgSize_B8_256x256;
 
 	//Affine Marix Transformation
 	REG_BG3PA = 256;
@@ -71,7 +71,7 @@ void graphics_main_config_ingame() {
 	REG_BG3PB = 0;
 	REG_BG3PD = 256;
 
-	swiCopy(planetsBitmap, BG_BMP_RAM(2), planetsBitmapLen/2);
+	swiCopy(planetsBitmap, BG_BMP_RAM(3), planetsBitmapLen/2);
 	swiCopy(planetsPal, BG_PALETTE, planetsPalLen/2);
 }
 
