@@ -8,6 +8,8 @@
 
 #include "splash.h"
 #include "planets.h"
+#include "crash_moon.h"
+#include "crash_earth.h"
 
 
 
@@ -24,6 +26,8 @@ void graphics_main_init() {
 
 
 void graphics_main_config_splash() {
+	//only bg3 active
+	REG_DISPCNT = MODE_5_2D | DISPLAY_BG3_ACTIVE;
 
 	//background 3
 	BGCTRL[3] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
@@ -36,6 +40,41 @@ void graphics_main_config_splash() {
 
 	swiCopy(splashBitmap, BG_BMP_RAM(0), splashBitmapLen/2);
 	swiCopy(splashPal, BG_PALETTE, splashPalLen/2);
+}
+
+void graphics_main_config_crash_moon() {
+	//only bg2 active
+	REG_DISPCNT = MODE_5_2D | DISPLAY_BG2_ACTIVE;
+
+	//background 3
+	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+
+	//Affine Marix Transformation
+	REG_BG2PA = 256;
+	REG_BG2PC = 0;
+	REG_BG2PB = 0;
+	REG_BG2PD = 256;
+
+	swiCopy(crash_moonBitmap, BG_BMP_RAM(0), crash_moonBitmapLen/2);
+	swiCopy(crash_moonPal, BG_PALETTE, crash_moonPalLen/2);
+}
+
+void graphics_main_config_crash_earth() {
+
+	//only bg2 active
+	REG_DISPCNT = MODE_5_2D | DISPLAY_BG2_ACTIVE;
+
+	//background 3
+	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+
+	//Affine Marix Transformation
+	REG_BG2PA = 256;
+	REG_BG2PC = 0;
+	REG_BG2PB = 0;
+	REG_BG2PD = 256;
+
+	swiCopy(crash_earthBitmap, BG_BMP_RAM(0), crash_earthBitmapLen/2);
+	swiCopy(crash_earthPal, BG_PALETTE, crash_earthPalLen/2);
 
 
 }
@@ -43,6 +82,8 @@ void graphics_main_config_splash() {
 
 //simulated framebuffer for tests
 void graphics_main_config_ingame() {
+	//BG2 and BG3 active
+	REG_DISPCNT = MODE_5_2D | DISPLAY_BG3_ACTIVE | DISPLAY_BG2_ACTIVE;
 	//background 2
 	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
 
