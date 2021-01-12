@@ -113,7 +113,7 @@ void game_init(GAME_STATE_t * state) {
 	state->rocket.yp = 0;
 	state->rocket.a = 0;
 	state->rocket.ap = 0;
-	graphics_main_config_crash_moon();
+	graphics_main_config_splash();
 	graphics_sub_config_splash();
 }
 
