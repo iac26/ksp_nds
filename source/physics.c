@@ -121,6 +121,7 @@ static ROCKET_STATE_t rocket_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 }
 
 //CREATE A FIXED POINT MODEL
+//MAYBE NOT AS IT WORKS ON THE NDS
 static ROCKET_STATE_t rocket_model(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	float GM = 1e3;
 	ROCKET_STATE_t dx;
@@ -161,21 +162,21 @@ static ROCKET_STATE_t rocket_integrate_rk4(ROCKET_STATE_t x, ROCKET_INPUT_t u, f
 	k1 = f(x, u);
 
 
-	tx.x  = x.x  + h/2 * k1.x;
-	tx.xp = x.xp + h/2 * k1.xp;
-	tx.y  = x.y  + h/2 * k1.y;
-	tx.yp = x.yp + h/2 * k1.yp;
-	tx.a  = x.a  + h/2 * k1.a;
-	tx.ap = x.ap + h/2 * k1.ap;
+	tx.x  = x.x  + h*0.5 * k1.x;
+	tx.xp = x.xp + h*0.5 * k1.xp;
+	tx.y  = x.y  + h*0.5 * k1.y;
+	tx.yp = x.yp + h*0.5 * k1.yp;
+	tx.a  = x.a  + h*0.5 * k1.a;
+	tx.ap = x.ap + h*0.5 * k1.ap;
 
 	k2 = f(tx, u);
 
-	tx.x  = x.x  + h/2 * k2.x;
-	tx.xp = x.xp + h/2 * k2.xp;
-	tx.y  = x.y  + h/2 * k2.y;
-	tx.yp = x.yp + h/2 * k2.yp;
-	tx.a  = x.a  + h/2 * k2.a;
-	tx.ap = x.ap + h/2 * k2.ap;
+	tx.x  = x.x  + h*0.5 * k2.x;
+	tx.xp = x.xp + h*0.5 * k2.xp;
+	tx.y  = x.y  + h*0.5 * k2.y;
+	tx.yp = x.yp + h*0.5 * k2.yp;
+	tx.a  = x.a  + h*0.5 * k2.a;
+	tx.ap = x.ap + h*0.5 * k2.ap;
 
 	k3 = f(tx, u);
 
@@ -188,12 +189,12 @@ static ROCKET_STATE_t rocket_integrate_rk4(ROCKET_STATE_t x, ROCKET_INPUT_t u, f
 
 	k4 = f(tx, u);
 
-	dx.x  = x.x  + h/6*(k1.x  + 2*k2.x  + 2*k3.x  + k4.x );
-	dx.xp = x.xp + h/6*(k1.xp + 2*k2.xp + 2*k3.xp + k4.xp);
-	dx.y  = x.y  + h/6*(k1.y  + 2*k2.y  + 2*k3.y  + k4.y );
-	dx.yp = x.yp + h/6*(k1.yp + 2*k2.yp + 2*k3.yp + k4.yp);
-	dx.a  = x.a  + h/6*(k1.a  + 2*k2.a  + 2*k3.a  + k4.a );
-	dx.ap = x.ap + h/6*(k1.ap + 2*k2.ap + 2*k3.ap + k4.ap);
+	dx.x  = x.x  + h*0.16667*(k1.x  + 2*k2.x  + 2*k3.x  + k4.x );
+	dx.xp = x.xp + h*0.16667*(k1.xp + 2*k2.xp + 2*k3.xp + k4.xp);
+	dx.y  = x.y  + h*0.16667*(k1.y  + 2*k2.y  + 2*k3.y  + k4.y );
+	dx.yp = x.yp + h*0.16667*(k1.yp + 2*k2.yp + 2*k3.yp + k4.yp);
+	dx.a  = x.a  + h*0.16667*(k1.a  + 2*k2.a  + 2*k3.a  + k4.a );
+	dx.ap = x.ap + h*0.16667*(k1.ap + 2*k2.ap + 2*k3.ap + k4.ap);
 
 	return dx;
 }
