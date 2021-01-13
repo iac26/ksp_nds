@@ -30,7 +30,7 @@ PRECOMPILED := precompiled
 #---------------------------------------------------------------------------------
 ARCH	:=	-mthumb -mthumb-interwork
 
-CFLAGS	:=	-g -Wall -O0\
+CFLAGS	:=	-g -Wall -O0 -std=c99\
  		-march=armv5te -mtune=arm946e-s -fomit-frame-pointer\
 		-ffast-math \
 		$(ARCH)

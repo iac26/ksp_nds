@@ -1,1 +1,0 @@
-fusee.o: fusee.s
