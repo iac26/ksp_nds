@@ -76,6 +76,8 @@ void graphics_sub_config_splash() {
 	REG_BG3PC_SUB = 0;
 	REG_BG3PB_SUB = 0;
 	REG_BG3PD_SUB = 256;
+	REG_BG3X_SUB = 0;
+	REG_BG3Y_SUB = 0;
 
 	swiCopy(splash2Bitmap, BG_BMP_RAM_SUB(BG3_BMP_SPLASH), splash2BitmapLen/2);
 	swiCopy(splash2Pal, BG_PALETTE_SUB, splash2PalLen/2);
@@ -96,6 +98,8 @@ void graphics_sub_config_ingame() {
 	REG_BG3PC_SUB = 0;
 	REG_BG3PB_SUB = 0;
 	REG_BG3PD_SUB = 256;
+	REG_BG3X_SUB = 0;
+	REG_BG3Y_SUB = 0;
 
 	swiCopy(horizonBitmap, BG_BMP_RAM_SUB(BG3_BMP), horizonBitmapLen/2);
 	swiCopy(horizonPal, BG_PALETTE_SUB+BG3_PALETTE_OFS, horizonPalLen/2);
@@ -108,6 +112,8 @@ void graphics_sub_config_ingame() {
 	REG_BG2PC_SUB = 0;
 	REG_BG2PB_SUB = 0;
 	REG_BG2PD_SUB = 256;
+	REG_BG2X_SUB = 0;
+	REG_BG2Y_SUB = 0;
 
 	swiCopy(fusee0Bitmap, BG_BMP_RAM_SUB(BG2_BMP0), fusee0BitmapLen/2);
 	swiCopy(fusee1Bitmap, BG_BMP_RAM_SUB(BG2_BMP1), fusee1BitmapLen/2);
