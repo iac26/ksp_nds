@@ -9,7 +9,7 @@
 @	+ bitmap not compressed
 @	Total size: 128 + 49152 = 49280
 @
-@	Time-stamp: 2021-01-13, 22:45:15
+@	Time-stamp: 2021-01-13, 23:16:06
 @	Exported by Cearn's GBA Image Transmogrifier, v0.8.6
 @	( http://www.coranac.com/projects/#grit )
 @
