@@ -5,6 +5,8 @@
 #include <nds.h>
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "numbers.h"
 #include "backplate.h"
@@ -23,8 +25,6 @@ void graphics_sub_init() {
 	// everything in vram C
 
 	VRAM_C_CR = VRAM_ENABLE | VRAM_C_SUB_BG;
-
-	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG1_ACTIVE | DISPLAY_BG2_ACTIVE | DISPLAY_BG3_ACTIVE;
 
 }
 
@@ -65,6 +65,9 @@ void graphics_sub_init() {
 
 void graphics_sub_config_splash() {
 
+	//config BGs
+	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG3_ACTIVE;
+
 	//background 3
 	BGCTRL_SUB[3] = BG_BMP_BASE(BG3_BMP_SPLASH) | (u16) BgSize_B8_256x256;
 
@@ -80,6 +83,10 @@ void graphics_sub_config_splash() {
 }
 
 void graphics_sub_config_ingame() {
+
+	//COnfig BGs
+
+	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG1_ACTIVE | DISPLAY_BG2_ACTIVE | DISPLAY_BG3_ACTIVE;
 
 	//background 3
 	BGCTRL_SUB[3] = BG_BMP_BASE(BG3_BMP) | (u16) BgSize_B8_128x128;

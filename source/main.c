@@ -23,21 +23,6 @@ int main(void) {
 
 	input_init();
 
-	/*
-	consoleDemoInit();
-	printf("\nTemplate nds\n");
-
-	while(1) {
-		swiWaitForVBlank();
-		scanKeys();
-		touchPosition touch;
-		touchRead(&touch);
-		if(touch.px || touch.py) {
-			printf("%d %d\n", touch.px, touch.py);
-		}
-	}
-	*/
-
 	graphics_main_init();
 	graphics_sub_init();
 

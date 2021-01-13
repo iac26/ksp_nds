@@ -20,8 +20,6 @@ void graphics_main_init() {
 
 	VRAM_A_CR = VRAM_ENABLE | VRAM_A_MAIN_BG;
 
-	REG_DISPCNT = MODE_5_2D | DISPLAY_BG3_ACTIVE | DISPLAY_BG2_ACTIVE;
-
 }
 
 

@@ -131,10 +131,13 @@ void game_splash(GAME_STATE_t * state) {
 void game_ingame(GAME_STATE_t * state) {
 	//update game dynamics
 
+	if(state->control_input.keysD & KEY_START) {
+		state->game_fsm = SPLASH;
+		graphics_main_config_splash();
+		graphics_sub_config_splash();
+	}
+
 	//update control inputs
-
-
-
 	ROCKET_INPUT_t input;
 
 	input.Tt = get_rcs(state->control_input);
