@@ -16,6 +16,8 @@ https://mtheall.com/vram.html#SUB=1&T0=1&NT0=320&MB0=11&TB0=0&S0=0&T1=1&NT1=64&M
 il faut modifier cette fontion dans grit/libgrit/grit_prep.cpp
 pour que l'assemblage des palettes fonctionne!
 
+Une version precompilée pour la machine virtuelle se trouve dans ```media/grit``` 
+
 ```C
 bool grit_prep_gfx(GritRec *gr)
 {
