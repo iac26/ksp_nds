@@ -21,6 +21,9 @@
 int main(void) {
 	static GAME_STATE_t game_state;
 
+	graphics_main_init();
+	graphics_sub_init();
+
 	game_init(&game_state);
 
 	sound_init();
@@ -28,8 +31,7 @@ int main(void) {
 	input_init(&game_state.control_input);
 
 
-	graphics_main_init();
-	graphics_sub_init();
+
 
 	game_state.game_fsm = SPLASH;
 
