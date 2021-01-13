@@ -102,3 +102,5 @@ Ingame first prototype
 
 ## problems list
 * Touchscreen works on the simulator but not on the NDS
+	* may the polling is done wrong???
+	* try compilation with the virtual machine...
