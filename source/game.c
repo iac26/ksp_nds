@@ -135,6 +135,7 @@ void game_ingame(GAME_STATE_t * state) {
 		state->game_fsm = SPLASH;
 		graphics_main_config_splash();
 		graphics_sub_config_splash();
+		return;
 	}
 
 	//update control inputs
