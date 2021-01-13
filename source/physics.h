@@ -1,6 +1,8 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
+#include <math.h>
+
 
 typedef struct {
 	int x;
@@ -27,6 +29,11 @@ typedef struct {
 	float Ft;
 	float Tt;
 }ROCKET_INPUT_t;
+
+#ifndef M_PI
+	#define M_PI	3.14159265358979323846264338327950288
+#endif
+
 
 
 #define WORLD_X_MAX	(256)
