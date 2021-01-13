@@ -26,8 +26,9 @@ void input_init() {
 void input_read(CONTROLS_t * control) {
 	scanKeys();
 
-	unsigned keysH = keysHeld();
-	unsigned keysD = keysDown();
+	unsigned keysH  = keysHeld();
+	unsigned keysD  = keysDown();
+	unsigned keysDR = keysDownRepeat();
 
 	if(keysH & KEY_TOUCH) {
 		handle_touch_hold(control);
@@ -36,14 +37,9 @@ void input_read(CONTROLS_t * control) {
 		handle_touch_down(control);
 	}
 
-	control->keysD = keysD;
-	control->keysH = keysH;
-
-
-
-
-
-
+	control->keysD  = keysD;
+	control->keysH  = keysH;
+	control->keysDR = keysDR;
 }
 
 
@@ -62,8 +58,6 @@ static void handle_touch_hold(CONTROLS_t * control) {
 		control->slider_val = SLIDER_VAL(touch.px);
 		control->slider_pos = SLIDER_POS(touch.px);
 	}
-
-
 }
 
 

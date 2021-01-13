@@ -27,10 +27,17 @@ int main(void) {
 	consoleDemoInit();
 	printf("\nTemplate nds\n");
 
-	game_ingame(&game_state);
+	while(1) {
+		swiWaitForVBlank();
+		scanKeys();
+		touchPosition touch;
+		touchRead(&touch);
+		if(touch.px || touch.py) {
+			printf("%d %d\n", touch.px, touch.py);
+		}
+	}
+	*/
 
-	while(1) swiWaitForVBlank();
-*/
 	graphics_main_init();
 	graphics_sub_init();
 

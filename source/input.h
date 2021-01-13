@@ -18,6 +18,7 @@ typedef struct {
 	AP_MODE_t ap_mode;
 	unsigned keysD;
 	unsigned keysH;
+	unsigned keysDR;
 
 }CONTROLS_t;
 

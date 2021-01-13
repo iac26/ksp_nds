@@ -26,12 +26,12 @@ float get_rcs(CONTROLS_t controls) {
 
 void update_thrust(CONTROLS_t * controls) {
 
-	if (controls->keysD & KEY_RIGHT) {
+	if (controls->keysDR & KEY_RIGHT) {
 		if(controls->slider_pos < SLIDER_POS_MAX) {
 			controls->slider_pos += 1;
 		}
 	}
-	if (controls->keysD & KEY_LEFT) {
+	if (controls->keysDR & KEY_LEFT) {
 		if(controls->slider_pos > SLIDER_POS_MIN) {
 			controls->slider_pos -= 1;
 		}
