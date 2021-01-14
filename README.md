@@ -99,6 +99,7 @@ Ingame first prototype
 * RK4 in fixed point
 * Something with the abort button
 * Crash detection and crash screen
+* use 20.12 fixed point numbers representation for everything!
 
 
 
