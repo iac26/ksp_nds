@@ -1,6 +1,6 @@
-graphics_main.o: /home/nds/files/ksp_nds/source/graphics_main.c \
-  /home/nds/files/ksp_nds/source/graphics_main.h \
-  /home/nds/files/ksp_nds/source/physics.h \
+graphics_main.o: /home/nds/files/propro/ksp_nds/source/graphics_main.c \
+  /home/nds/files/propro/ksp_nds/source/graphics_main.h \
+  /home/nds/files/propro/ksp_nds/source/physics.h \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -49,18 +49,18 @@ graphics_main.o: /home/nds/files/ksp_nds/source/graphics_main.c \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
-  /home/nds/files/ksp_nds/build/splash.h \
-  /home/nds/files/ksp_nds/build/planets.h \
-  /home/nds/files/ksp_nds/build/crash_moon.h \
-  /home/nds/files/ksp_nds/build/crash_earth.h \
-  /home/nds/files/ksp_nds/build/crash_wall.h \
-  /home/nds/files/ksp_nds/build/rocket.h \
-  /home/nds/files/ksp_nds/build/backplate.h \
-  /home/nds/files/ksp_nds/build/intro.h
+  /home/nds/files/propro/ksp_nds/build/splash.h \
+  /home/nds/files/propro/ksp_nds/build/planets.h \
+  /home/nds/files/propro/ksp_nds/build/crash_moon.h \
+  /home/nds/files/propro/ksp_nds/build/crash_earth.h \
+  /home/nds/files/propro/ksp_nds/build/crash_wall.h \
+  /home/nds/files/propro/ksp_nds/build/rocket.h \
+  /home/nds/files/propro/ksp_nds/build/backplate.h \
+  /home/nds/files/propro/ksp_nds/build/intro.h
 
-/home/nds/files/ksp_nds/source/graphics_main.h:
+/home/nds/files/propro/ksp_nds/source/graphics_main.h:
 
-/home/nds/files/ksp_nds/source/physics.h:
+/home/nds/files/propro/ksp_nds/source/physics.h:
 
 /opt/devkitPro/libnds/include/nds.h:
 
@@ -158,18 +158,18 @@ graphics_main.o: /home/nds/files/ksp_nds/source/graphics_main.c \
 
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
-/home/nds/files/ksp_nds/build/splash.h:
+/home/nds/files/propro/ksp_nds/build/splash.h:
 
-/home/nds/files/ksp_nds/build/planets.h:
+/home/nds/files/propro/ksp_nds/build/planets.h:
 
-/home/nds/files/ksp_nds/build/crash_moon.h:
+/home/nds/files/propro/ksp_nds/build/crash_moon.h:
 
-/home/nds/files/ksp_nds/build/crash_earth.h:
+/home/nds/files/propro/ksp_nds/build/crash_earth.h:
 
-/home/nds/files/ksp_nds/build/crash_wall.h:
+/home/nds/files/propro/ksp_nds/build/crash_wall.h:
 
-/home/nds/files/ksp_nds/build/rocket.h:
+/home/nds/files/propro/ksp_nds/build/rocket.h:
 
-/home/nds/files/ksp_nds/build/backplate.h:
+/home/nds/files/propro/ksp_nds/build/backplate.h:
 
-/home/nds/files/ksp_nds/build/intro.h:
+/home/nds/files/propro/ksp_nds/build/intro.h:

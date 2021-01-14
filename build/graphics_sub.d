@@ -1,6 +1,6 @@
-graphics_sub.o: /home/nds/files/ksp_nds/source/graphics_sub.c \
-  /home/nds/files/ksp_nds/source/graphics_sub.h \
-  /home/nds/files/ksp_nds/source/input.h \
+graphics_sub.o: /home/nds/files/propro/ksp_nds/source/graphics_sub.c \
+  /home/nds/files/propro/ksp_nds/source/graphics_sub.h \
+  /home/nds/files/propro/ksp_nds/source/input.h \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -49,21 +49,21 @@ graphics_sub.o: /home/nds/files/ksp_nds/source/graphics_sub.c \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
-  /home/nds/files/ksp_nds/build/numbers.h \
-  /home/nds/files/ksp_nds/build/backplate.h \
-  /home/nds/files/ksp_nds/build/fusee0.h \
-  /home/nds/files/ksp_nds/build/fusee1.h \
-  /home/nds/files/ksp_nds/build/fusee2.h \
-  /home/nds/files/ksp_nds/build/horizon.h \
-  /home/nds/files/ksp_nds/build/splash2.h \
-  /home/nds/files/ksp_nds/build/crash2.h \
-  /home/nds/files/ksp_nds/build/intro2.h \
-  /home/nds/files/ksp_nds/build/pause.h \
-  /home/nds/files/ksp_nds/source/positions.h
+  /home/nds/files/propro/ksp_nds/build/numbers.h \
+  /home/nds/files/propro/ksp_nds/build/backplate.h \
+  /home/nds/files/propro/ksp_nds/build/fusee0.h \
+  /home/nds/files/propro/ksp_nds/build/fusee1.h \
+  /home/nds/files/propro/ksp_nds/build/fusee2.h \
+  /home/nds/files/propro/ksp_nds/build/horizon.h \
+  /home/nds/files/propro/ksp_nds/build/splash2.h \
+  /home/nds/files/propro/ksp_nds/build/crash2.h \
+  /home/nds/files/propro/ksp_nds/build/intro2.h \
+  /home/nds/files/propro/ksp_nds/build/pause.h \
+  /home/nds/files/propro/ksp_nds/source/positions.h
 
-/home/nds/files/ksp_nds/source/graphics_sub.h:
+/home/nds/files/propro/ksp_nds/source/graphics_sub.h:
 
-/home/nds/files/ksp_nds/source/input.h:
+/home/nds/files/propro/ksp_nds/source/input.h:
 
 /opt/devkitPro/libnds/include/nds.h:
 
@@ -161,24 +161,24 @@ graphics_sub.o: /home/nds/files/ksp_nds/source/graphics_sub.c \
 
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
-/home/nds/files/ksp_nds/build/numbers.h:
+/home/nds/files/propro/ksp_nds/build/numbers.h:
 
-/home/nds/files/ksp_nds/build/backplate.h:
+/home/nds/files/propro/ksp_nds/build/backplate.h:
 
-/home/nds/files/ksp_nds/build/fusee0.h:
+/home/nds/files/propro/ksp_nds/build/fusee0.h:
 
-/home/nds/files/ksp_nds/build/fusee1.h:
+/home/nds/files/propro/ksp_nds/build/fusee1.h:
 
-/home/nds/files/ksp_nds/build/fusee2.h:
+/home/nds/files/propro/ksp_nds/build/fusee2.h:
 
-/home/nds/files/ksp_nds/build/horizon.h:
+/home/nds/files/propro/ksp_nds/build/horizon.h:
 
-/home/nds/files/ksp_nds/build/splash2.h:
+/home/nds/files/propro/ksp_nds/build/splash2.h:
 
-/home/nds/files/ksp_nds/build/crash2.h:
+/home/nds/files/propro/ksp_nds/build/crash2.h:
 
-/home/nds/files/ksp_nds/build/intro2.h:
+/home/nds/files/propro/ksp_nds/build/intro2.h:
 
-/home/nds/files/ksp_nds/build/pause.h:
+/home/nds/files/propro/ksp_nds/build/pause.h:
 
-/home/nds/files/ksp_nds/source/positions.h:
+/home/nds/files/propro/ksp_nds/source/positions.h:

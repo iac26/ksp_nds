@@ -1,5 +1,5 @@
-physics.o: /home/nds/files/ksp_nds/source/physics.c \
-  /home/nds/files/ksp_nds/source/physics.h \
+physics.o: /home/nds/files/propro/ksp_nds/source/physics.c \
+  /home/nds/files/propro/ksp_nds/source/physics.h \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -49,7 +49,7 @@ physics.o: /home/nds/files/ksp_nds/source/physics.c \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h
 
-/home/nds/files/ksp_nds/source/physics.h:
+/home/nds/files/propro/ksp_nds/source/physics.h:
 
 /opt/devkitPro/libnds/include/nds.h:
 
