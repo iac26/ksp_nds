@@ -31,6 +31,14 @@ typedef struct {
 	FLIGHT_FSM_t flight_fsm;
 	CONTROLS_t control_input;
 	ROCKET_STATE_t rocket;
+	float r_moon;
+	float r_earth;
+	float r;
+	float phi_earth;
+	float phi_moon;
+	float phi;
+	float vel;
+	uint8_t moon;
 
 }GAME_STATE_t;
 

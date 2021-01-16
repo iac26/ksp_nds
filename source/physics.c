@@ -16,7 +16,10 @@ static float rk4(float x, float h, float (*f)(float));
 
 static ROCKET_STATE_t rocket_integrate_rk4(ROCKET_STATE_t x, ROCKET_INPUT_t u, float h, ROCKET_STATE_t (*f)(ROCKET_STATE_t, ROCKET_INPUT_t));
 
-static ROCKET_STATE_t rocket_model(ROCKET_STATE_t x, ROCKET_INPUT_t u);
+static ROCKET_STATE_t rocket_model_earth(ROCKET_STATE_t x, ROCKET_INPUT_t u);
+
+
+static ROCKET_STATE_t rocket_model_moon(ROCKET_STATE_t x, ROCKET_INPUT_t u);
 
 static ROCKET_STATE_t rocket_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u);
 
@@ -27,7 +30,7 @@ void physics_predict_orbit( IVEC_t * result, ROCKET_STATE_t x, int N) {
 	ROCKET_INPUT_t u = {0, 0};
 
 	for(int i = 0; i < N; i++) {
-		x = rocket_integrate_rk4(x, u, TIME_STEP, rocket_model);
+		x = rocket_integrate_rk4(x, u, TIME_STEP, rocket_model_earth);
 		result[i].x = (int) x.x + 128;
 		result[i].y = (int) x.y + 96;
 
@@ -39,9 +42,14 @@ ROCKET_STATE_t physics_step_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 }
 
 
-ROCKET_STATE_t physics_step_grav(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
-	return rocket_integrate_rk4(x, u, TIME_STEP, rocket_model);
+ROCKET_STATE_t physics_step_grav(ROCKET_STATE_t x, ROCKET_INPUT_t u, uint8_t moon) {
+	if(moon){
+		return rocket_integrate_rk4(x, u, TIME_STEP, rocket_model_moon);
+	} else {
+		return rocket_integrate_rk4(x, u, TIME_STEP, rocket_model_earth);
+	}
 }
+
 
 
 void physics_world_boundary(ROCKET_STATE_t * x) {
@@ -59,7 +67,7 @@ void physics_world_boundary(ROCKET_STATE_t * x) {
 	}
 }
 
-float physics_get_phi(ROCKET_STATE_t x) {
+float physics_get_phi_earth(ROCKET_STATE_t x) {
 	float vx = -EARTH_X+x.x;
 	float vy = -EARTH_Y+x.y;
 
@@ -70,9 +78,30 @@ float physics_get_phi(ROCKET_STATE_t x) {
 
 }
 
-float physics_get_r(ROCKET_STATE_t x) {
+float physics_get_r_earth(ROCKET_STATE_t x) {
 	float vx = -EARTH_X+x.x;
 	float vy = -EARTH_Y+x.y;
+
+
+	float r = sqrt(vy*vy+ vx*vx);
+
+	return r;
+}
+
+float physics_get_phi_moon(ROCKET_STATE_t x) {
+	float vx = -MOON_X+x.x;
+	float vy = -MOON_Y+x.y;
+
+
+	float phi = atan2(vy, vx);
+
+	return phi;
+
+}
+
+float physics_get_r_moon(ROCKET_STATE_t x) {
+	float vx = -MOON_X+x.x;
+	float vy = -MOON_Y+x.y;
 
 
 	float r = sqrt(vy*vy+ vx*vx);
@@ -122,12 +151,36 @@ static ROCKET_STATE_t rocket_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 
 //CREATE A FIXED POINT MODEL
 //MAYBE NOT AS IT WORKS ON THE NDS
-static ROCKET_STATE_t rocket_model(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
+static ROCKET_STATE_t rocket_model_earth(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	float GM = 1e3;
 	ROCKET_STATE_t dx;
 
 	float vx = -EARTH_X+x.x;
 	float vy = -EARTH_Y+x.y;
+
+
+	float phi = atan2(vy, vx);
+	float rs = vx*vx + vy*vy;
+
+	float ag = -GM/(rs);
+
+	dx.x = x.xp;
+	dx.y = x.yp;
+	dx.a = x.ap;
+
+	dx.xp = cos(phi)*ag + sin(x.a)*u.Ft*ROCKET_INV_MASS;
+	dx.yp = sin(phi)*ag - cos(x.a)*u.Ft*ROCKET_INV_MASS;
+	dx.ap = u.Tt*ROCKET_INV_INERTIA;
+
+	return dx;
+}
+
+static ROCKET_STATE_t rocket_model_moon(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
+	float GM = 10e2;
+	ROCKET_STATE_t dx;
+
+	float vx = -MOON_X+x.x;
+	float vy = -MOON_Y+x.y;
 
 
 	float phi = atan2(vy, vx);

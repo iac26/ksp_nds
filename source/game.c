@@ -113,6 +113,7 @@ void game_init(GAME_STATE_t * state) {
 	state->rocket.yp = 0;
 	state->rocket.a = 0;
 	state->rocket.ap = 0;
+	state->moon = 0;
 	graphics_main_config_splash();
 	graphics_sub_config_splash();
 }
@@ -156,11 +157,25 @@ void game_ingame(GAME_STATE_t * state) {
 
 	//update rocket dynamics
 
-	state->rocket = physics_step_grav(state->rocket, input);
+	state->rocket = physics_step_grav(state->rocket, input, state->moon);
 
-	float phi = physics_get_phi(state->rocket);
-	float r = physics_get_r(state->rocket);
-	float vel = physics_get_vel(state->rocket);
+
+
+	state->phi_earth = physics_get_phi_earth(state->rocket);
+	state->r_earth = physics_get_r_earth(state->rocket);
+	state->phi_moon = physics_get_phi_moon(state->rocket);
+	state->r_moon = physics_get_r_moon(state->rocket);
+	state->vel = physics_get_vel(state->rocket);
+
+	if(state->r_moon < MOON_SOI) {
+		state->phi = state->phi_moon;
+		state->r = state->r_moon;
+		state->moon = 1;
+	} else {
+		state->phi = state->phi_earth;
+		state->r = state->r_earth;
+		state->moon = 0;
+	}
 
 	physics_world_boundary(&state->rocket);
 
@@ -173,10 +188,10 @@ void game_ingame(GAME_STATE_t * state) {
 	graphics_sub_rocket_ingame(get_rocket_type(state->control_input));
 	graphics_sub_put_slider(state->control_input.slider_pos);
 	graphics_sub_set_ap(state->control_input.ap_mode);
-	graphics_sub_put_speed(vel*1000);
-	graphics_sub_put_alt(r*10000);
+	graphics_sub_put_speed(state->vel*1000);
+	graphics_sub_put_alt(state->r*10000);
 	graphics_sub_put_nav(state->rocket.a, 2);
-	graphics_sub_put_hor(ROCKET_CORRECT_ANGLE(phi), 0.2, -50+r);
+	graphics_sub_put_hor(ROCKET_CORRECT_ANGLE(state->phi), 0.2, -50+state->r);
 
 	graphics_main_path(orb, 1);
 

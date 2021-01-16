@@ -46,6 +46,11 @@ typedef struct {
 #define EARTH_X		(WORLD_X_MAX/2)
 #define EARTH_Y		(WORLD_Y_MAX/2)
 
+#define MOON_X		(224)
+#define MOON_Y		(96)
+
+#define MOON_SOI	(45)
+
 
 #define ROCKET_INERTIA (0.5)
 #define ROCKET_INV_INERTIA	(1/(float)ROCKET_INERTIA)
@@ -62,10 +67,12 @@ void physics_predict_orbit( IVEC_t * result, ROCKET_STATE_t x, int N);
 
 ROCKET_STATE_t physics_step_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u);
 
-ROCKET_STATE_t physics_step_grav(ROCKET_STATE_t x, ROCKET_INPUT_t u);
+ROCKET_STATE_t physics_step_grav(ROCKET_STATE_t x, ROCKET_INPUT_t u, uint8_t moon);
 
-float physics_get_phi(ROCKET_STATE_t x);
-float physics_get_r(ROCKET_STATE_t x);
+float physics_get_phi_earth(ROCKET_STATE_t x);
+float physics_get_r_earth(ROCKET_STATE_t x);
+float physics_get_phi_moon(ROCKET_STATE_t x);
+float physics_get_r_moon(ROCKET_STATE_t x);
 float physics_get_vel(ROCKET_STATE_t x);
 float physics_get_theta(ROCKET_STATE_t x);
 
