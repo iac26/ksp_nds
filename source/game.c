@@ -108,8 +108,8 @@ void game_init(GAME_STATE_t * state) {
 	state->control_input.slider_pos = 3;
 	state->control_input.slider_val = 0;
 	state->rocket.x = 128;
-	state->rocket.xp = 2;
-	state->rocket.y = 10;
+	state->rocket.xp = 6;
+	state->rocket.y = 70;
 	state->rocket.yp = 0;
 	state->rocket.a = 0;
 	state->rocket.ap = 0;
