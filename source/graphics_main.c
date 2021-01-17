@@ -11,8 +11,6 @@
 #include "crash_moon.h"
 #include "crash_earth.h"
 
-
-
 static unsigned short * simulated_fb = 0;
 
 void graphics_main_init() {
@@ -77,6 +75,27 @@ void graphics_main_config_crash_earth() {
 
 }
 
+void graphics_main_config_crash() {
+
+	//only bg2 active
+	REG_DISPCNT = MODE_5_2D | DISPLAY_BG2_ACTIVE;
+
+	//background 3
+	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+
+	//Affine Marix Transformation
+	REG_BG2PA = 256;
+	REG_BG2PC = 0;
+	REG_BG2PB = 0;
+	REG_BG2PD = 256;
+
+	swiCopy(crash_earthBitmap, BG_BMP_RAM(0), crash_earthBitmapLen/2);
+	swiCopy(crash_earthPal, BG_PALETTE, crash_earthPalLen/2);
+
+
+}
+
+
 
 //simulated framebuffer for tests
 void graphics_main_config_ingame() {
@@ -112,12 +131,14 @@ void graphics_main_config_ingame() {
 
 	swiCopy(planetsBitmap, BG_BMP_RAM(3), planetsBitmapLen/2);
 	swiCopy(planetsPal, BG_PALETTE, planetsPalLen/2);
+
 }
 
 #define FB_IX(x, y) ((x) + (y)*256)
 
 void graphics_main_path(IVEC_t * pos, int len) {
-	for(int i = 0; i < len; i++) {
+	int i;
+	for(i = 0; i < len; i++) {
 		simulated_fb[FB_IX(pos[i].x, pos[i].y)/2] |= pos[i].x%2?254<<8:254;
 	}
 }

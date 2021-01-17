@@ -171,13 +171,21 @@ void game_ingame(GAME_STATE_t * state) {
 		state->phi = state->phi_moon;
 		state->r = state->r_moon;
 		state->moon = 1;
+		if(state->r < 5){
+			state->game_fsm = CRASH;
+		}
 	} else {
 		state->phi = state->phi_earth;
 		state->r = state->r_earth;
 		state->moon = 0;
+		if(state->r < 5){
+			state->game_fsm = CRASH;
+		}
 	}
-
-	physics_world_boundary(&state->rocket);
+	if((state->rocket.x ==0)|(state->rocket.y ==0)|(state->rocket.x == 256)|(state->rocket.y == 192)){
+		state->game_fsm = CRASH;
+	}
+	//physics_world_boundary(&state->rocket);
 
 	IVEC_t orb[] = {{state->rocket.x, state->rocket.y}};
 
@@ -195,6 +203,24 @@ void game_ingame(GAME_STATE_t * state) {
 
 	graphics_main_path(orb, 1);
 
+}
+
+void game_crash(GAME_STATE_t * state){
+	if (state->moon == 1){
+		graphics_main_config_crash_moon();
+	}
+	else if (state->r <5){
+		graphics_main_config_crash_earth();
+	}
+	else {
+		graphics_main_config_crash();
+	}
+	if(state->control_input.keysD & KEY_START) {
+		state->game_fsm = SPLASH;
+		graphics_main_config_splash();
+		graphics_sub_config_splash();
+		return;
+	}
 }
 
 void game_end(GAME_STATE_t * state) {

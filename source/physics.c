@@ -29,7 +29,8 @@ static ROCKET_STATE_t rocket_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u);
 void physics_predict_orbit( IVEC_t * result, ROCKET_STATE_t x, int N) {
 	ROCKET_INPUT_t u = {0, 0};
 
-	for(int i = 0; i < N; i++) {
+	int i;
+	for(i = 0; i < N; i++) {
 		x = rocket_integrate_rk4(x, u, TIME_STEP, rocket_model_earth);
 		result[i].x = (int) x.x + 128;
 		result[i].y = (int) x.y + 96;

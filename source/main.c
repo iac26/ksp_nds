@@ -40,6 +40,9 @@ int main(void) {
 		case INGAME:
 			game_ingame(&game_state);
 			break;
+		case CRASH:
+			game_crash(&game_state);
+			break;
 		case END:
 			game_end(&game_state);
 			break;

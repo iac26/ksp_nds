@@ -180,8 +180,8 @@ static void number_to_digits(unsigned short digits[6], unsigned int number) {
 	} else {
 		digits[0] = 12;
 	}
-
-	for (int i = 1; i < 6; i++ ) {
+	int i;
+	for (i = 1; i < 6; i++ ) {
 		digits[i] = number % 10;
 		number = number / 10;
 	}
