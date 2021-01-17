@@ -26,6 +26,7 @@ int main(void) {
 	graphics_main_init();
 	graphics_sub_init();
 
+	game_state.game_fsm = SPLASH;
 
 	//do the right configuration for the main and sub screens
 
@@ -35,6 +36,7 @@ int main(void) {
 		input_read(&(game_state.control_input));
 		switch(game_state.game_fsm) {
 		case SPLASH:
+			game_init(&game_state);
 			game_splash(&game_state);
 			break;
 		case INGAME:
@@ -43,11 +45,11 @@ int main(void) {
 		case CRASH:
 			game_crash(&game_state);
 			break;
-		case END:
-			game_end(&game_state);
+		case PAUSE:
+			game_pause(&game_state);
 			break;
 		default:
-			game_end(&game_state);
+			game_splash(&game_state);
 			break;
 		}
 	}

@@ -13,7 +13,8 @@ typedef enum {
 	SPLASH,
 	INGAME,
 	CRASH,
-	END,
+	PAUSE,
+	INTRO,
 	GAME_FSM_N
 }GAME_FSM_t;
 

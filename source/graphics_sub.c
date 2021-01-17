@@ -84,6 +84,64 @@ void graphics_sub_config_splash() {
 
 }
 
+void graphics_sub_config_crash() {
+
+	//config BGs
+	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG3_ACTIVE;
+
+	//background 3
+	BGCTRL_SUB[3] = BG_BMP_BASE(BG3_BMP_SPLASH) | (u16) BgSize_B8_256x256;
+
+	//Affine Marix Transformation
+	REG_BG3PA_SUB = 256;
+	REG_BG3PC_SUB = 0;
+	REG_BG3PB_SUB = 0;
+	REG_BG3PD_SUB = 256;
+	REG_BG3X_SUB = 0;
+	REG_BG3Y_SUB = 0;
+
+	swiCopy(splash2Bitmap, BG_BMP_RAM_SUB(BG3_BMP_SPLASH), splash2BitmapLen/2);
+	swiCopy(splash2Pal, BG_PALETTE_SUB, splash2PalLen/2);
+
+}
+
+void graphics_sub_config_pause() {
+
+	//COnfig BGs
+
+	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG1_ACTIVE;
+
+	//background 1
+	BGCTRL_SUB[1] = BG_32x32 | BG_COLOR_256 | BG_MAP_BASE(BG1_MAP) | BG_TILE_BASE(BG1_TILE) ;
+
+	swiCopy(backplateTiles, BG_TILE_RAM_SUB(BG1_TILE), backplateTilesLen/2);
+	swiCopy(backplateMap, BG_MAP_RAM_SUB(BG1_MAP), backplateMapLen/2);
+
+
+	swiCopy(backplatePal, BG_PALETTE_SUB+BG1_PALETTE_OFS, backplatePalLen/2);
+
+	memset(overlay_map, EMPTY_TILE, 2*backplateMapLen); // fill with empty tiles
+
+}
+
+void graphics_sub_config_intro() {
+	//COnfig BGs
+
+	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG1_ACTIVE;
+
+	//background 1
+	BGCTRL_SUB[1] = BG_32x32 | BG_COLOR_256 | BG_MAP_BASE(BG1_MAP) | BG_TILE_BASE(BG1_TILE) ;
+
+	swiCopy(backplateTiles, BG_TILE_RAM_SUB(BG1_TILE), backplateTilesLen/2);
+	swiCopy(backplateMap, BG_MAP_RAM_SUB(BG1_MAP), backplateMapLen/2);
+
+
+	swiCopy(backplatePal, BG_PALETTE_SUB+BG1_PALETTE_OFS, backplatePalLen/2);
+
+	memset(overlay_map, EMPTY_TILE, 2*backplateMapLen); // fill with empty tiles
+
+}
+
 void graphics_sub_config_ingame() {
 
 	//COnfig BGs

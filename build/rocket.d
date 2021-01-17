@@ -1,0 +1,1 @@
+rocket.o: rocket.s

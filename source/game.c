@@ -124,20 +124,37 @@ void game_splash(GAME_STATE_t * state) {
 		graphics_main_config_ingame();
 		graphics_sub_config_ingame();
 	}
-
+	if(state->control_input.keysD & (KEY_SELECT)) {
+		state->game_fsm = INTRO;
+		graphics_main_config_intro();
+		graphics_sub_config_intro();
+	}
 
 }
 
-
+void game_intro(GAME_STATE_t * state){
+	if(state->control_input.keysD & KEY_START) {
+			state->game_fsm = INGAME;
+			graphics_main_config_ingame();
+			graphics_sub_config_ingame();
+	}
+	if(state->control_input.keysD & KEY_SELECT) {
+		state->game_fsm = SPLASH;
+		return;
+	}
+}
 void game_ingame(GAME_STATE_t * state) {
 	//update game dynamics
 
 	if(state->control_input.keysD & KEY_START) {
-		state->game_fsm = SPLASH;
-		graphics_main_config_splash();
-		graphics_sub_config_splash();
-		return;
-	}
+			state->game_fsm = PAUSE;
+			graphics_sub_config_pause();
+			return;
+		}
+	if(state->control_input.keysD & KEY_B) {
+			state->game_fsm = SPLASH;
+			return;
+		}
 
 	//update control inputs
 	ROCKET_INPUT_t input;
@@ -151,9 +168,6 @@ void game_ingame(GAME_STATE_t * state) {
 	if(input.Tt == 0) {
 		input.Tt = auto_pilot(state);
 	}
-
-
-
 
 	//update rocket dynamics
 
@@ -209,13 +223,14 @@ void game_crash(GAME_STATE_t * state){
 	if (state->moon == 1){
 		graphics_main_config_crash_moon();
 	}
-	else if (state->r <5){
+	else if (state->r < 5){
 		graphics_main_config_crash_earth();
 	}
 	else {
-		graphics_main_config_crash();
+		graphics_main_config_crash_wall();
 	}
-	if(state->control_input.keysD & KEY_START) {
+	graphics_sub_config_crash();
+	if(state->control_input.keysD & (KEY_START | KEY_TOUCH | KEY_B)) {
 		state->game_fsm = SPLASH;
 		graphics_main_config_splash();
 		graphics_sub_config_splash();
@@ -223,10 +238,14 @@ void game_crash(GAME_STATE_t * state){
 	}
 }
 
-void game_end(GAME_STATE_t * state) {
-	state->game_fsm = SPLASH;
-	graphics_main_config_splash();
-	graphics_sub_config_splash();
+void game_pause(GAME_STATE_t * state) {
+
+	if(state->control_input.keysD & (KEY_START| KEY_START)) {
+			state->game_fsm = INGAME;
+			graphics_main_config_ingame();
+			graphics_sub_config_ingame();
+			return;
+		}
 }
 
 

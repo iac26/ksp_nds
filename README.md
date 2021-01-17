@@ -93,17 +93,20 @@ Ingame first prototype
 * GUI buttons for autopilot
 * splashscreen
 * Game logic
+* Crash detection and crash screen
 
 ## todo list
 * GUI cleanup
 * RK4 in fixed point
-* Something with the abort button
-* Crash detection and crash screen
+* Something with the abort button (need to connect to splash screen not done yet)
 * use 20.12 fixed point numbers representation for everything!
+* BG images for: wall crash, sub crash screen, instruction pannels, pause controls
+* exact list of buttons that lead from one screen to another
+* sprite rotation?
+
 
 
 
 ## problems list
-* Touchscreen works on the simulator but not on the NDS
-	* may the polling is done wrong???
-	* try compilation with the virtual machine...
+* start screen for some reason is slightly off center, might be the init which messes up?
+*border crash not properly detected yet
