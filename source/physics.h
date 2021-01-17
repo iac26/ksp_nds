@@ -2,7 +2,8 @@
 #define PHYSICS_H
 
 #include <math.h>
-
+#include <stdio.h>
+#include <nds.h>
 
 typedef struct {
 	int x;
