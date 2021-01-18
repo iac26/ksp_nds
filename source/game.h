@@ -62,7 +62,11 @@ void game_splash(GAME_STATE_t * state);
 
 void game_intro(GAME_STATE_t * state);
 
+void game_exit_intro(GAME_STATE_t * state);
+
 void game_ingame(GAME_STATE_t * state);
+
+void game_init_crash(GAME_STATE_t * state);
 
 void game_crash(GAME_STATE_t * state);
 

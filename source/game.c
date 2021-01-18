@@ -123,6 +123,7 @@ void game_splash(GAME_STATE_t * state) {
 		state->game_fsm = INGAME;
 		graphics_main_config_ingame();
 		graphics_sub_config_ingame();
+		graphics_main_clear_path();
 	}
 
 }
@@ -132,8 +133,33 @@ void game_intro(GAME_STATE_t * state){
 		graphics_main_config_intro();
 		graphics_sub_config_intro();
 		state->intro = 1;
+		state->previous = state->game_fsm;
 	}
 }
+
+void game_exit_intro(GAME_STATE_t * state) {
+	if(state->intro) {
+		state->intro = 0;
+		switch(state->previous) {
+		case INGAME:
+			graphics_main_config_ingame();
+			graphics_sub_config_ingame();
+			break;
+		case CRASH:
+			game_init_crash(state);
+			break;
+		case PAUSE:
+			graphics_main_config_ingame();
+			graphics_sub_config_pause();
+			break;
+		case SPLASH:
+			graphics_main_config_splash();
+			graphics_sub_config_splash();
+			break;
+		}
+	}
+}
+
 void game_ingame(GAME_STATE_t * state) {
 	//update game dynamics
 
@@ -144,6 +170,7 @@ void game_ingame(GAME_STATE_t * state) {
 	}
 	if(state->control_input.keysD & KEY_B) {
 		game_init(state);
+		graphics_main_clear_path();
 		return;
 	}
 
@@ -212,8 +239,8 @@ void game_ingame(GAME_STATE_t * state) {
 
 }
 
-void game_crash(GAME_STATE_t * state){
 
+void game_init_crash(GAME_STATE_t * state) {
 	switch (state->crash_type) {
 	case EARTH:
 		graphics_main_config_crash_earth();
@@ -233,8 +260,14 @@ void game_crash(GAME_STATE_t * state){
 	}
 
 	graphics_sub_config_crash();
+}
+
+void game_crash(GAME_STATE_t * state){
+
+
 	if(state->control_input.keysD & (KEY_START | KEY_TOUCH | KEY_B | KEY_A)) {
 		game_init(state);
+		graphics_main_clear_path();
 		return;
 	}
 }
@@ -248,6 +281,7 @@ void game_pause(GAME_STATE_t * state) {
 	}
 	if(state->control_input.keysD & KEY_B) {
 		game_init(state);
+		graphics_main_clear_path();
 		return;
 	}
 }

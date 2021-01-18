@@ -12,6 +12,7 @@
 #include "crash_earth.h"
 #include "crash_wall.h"
 #include "rocket.h"
+#include "backplate.h"
 
 //#define	SPRITE_WIDTH	8
 //#define	SPRITE_HEIGHT	8
@@ -119,24 +120,24 @@ void graphics_main_config_crash_wall() {
 
 }
 
-void graphics_main_config_intro() {
 
+void graphics_main_config_intro() {
 	//only bg2 active
-	REG_DISPCNT = MODE_5_2D | DISPLAY_BG2_ACTIVE;
+	REG_DISPCNT = MODE_5_2D | DISPLAY_BG3_ACTIVE;
 
 	//background 3
-	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+	BGCTRL[3] = BG_BMP_BASE(3) | (u16) BgSize_B8_256x256;
 
 	//Affine Marix Transformation
-	REG_BG2PA = 256;
-	REG_BG2PC = 0;
-	REG_BG2PB = 0;
-	REG_BG2PD = 256;
+	REG_BG3PA = 256;
+	REG_BG3PC = 0;
+	REG_BG3PB = 0;
+	REG_BG3PD = 256;
 
-	swiCopy(crash_earthBitmap, BG_BMP_RAM(0), crash_earthBitmapLen/2);
-	swiCopy(crash_earthPal, BG_PALETTE, crash_earthPalLen/2);
-
+	swiCopy(splashBitmap, BG_BMP_RAM(3), splashBitmapLen/2);
+	swiCopy(splashPal, BG_PALETTE, splashPalLen/2);
 }
+
 
 
 
@@ -161,8 +162,6 @@ void graphics_main_config_ingame() {
 	pal[255] = RGB15(31, 31, 31);
 	pal[254] = RGB15(0, 15, 0);
 
-	memset(simulated_fb, 0, 256*192);
-
 
 	BGCTRL[3] = BG_BMP_BASE(3) | (u16) BgSize_B8_256x256;
 
@@ -179,6 +178,11 @@ void graphics_main_config_ingame() {
 	graphics_main_config_sprite();
 
 }
+
+void graphics_main_clear_path() {
+	memset(simulated_fb, 0, 256*192);
+}
+
 
 #define FB_IX(x, y) ((x) + (y)*256)
 
