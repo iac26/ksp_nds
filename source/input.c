@@ -28,6 +28,7 @@ void input_read(CONTROLS_t * control, uint8_t touch_active) {
 	unsigned keysD  = keysDown();
 	unsigned keysDR = keysDownRepeat();
 
+	//Touch buttons only active in INGAME mode
 	if((keysH & KEY_TOUCH) && touch_active) {
 		handle_touch_hold(control);
 	}

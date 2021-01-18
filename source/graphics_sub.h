@@ -6,6 +6,12 @@
 
 /*
  * REQUIRES MODIFIED GRIT
+ * add this in grit_prep_gfx()
+ *
+ *  for(int i = 0; i < dstS; i++) {
+ *		if(dstD[i])
+ *			dstD[i] += gr->gfxOffset;
+ *  }
  *
  */
 

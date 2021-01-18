@@ -18,9 +18,6 @@
 
 
 
-
-
-
 int main(void) {
 	static GAME_STATE_t game_state;
 
@@ -35,8 +32,6 @@ int main(void) {
 	graphics_sub_init();
 
 	game_state.game_fsm = SPLASH;
-
-	//do the right configuration for the main and sub screens
 
 	sound_ambiance();
 

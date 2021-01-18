@@ -136,6 +136,7 @@ void physics_angle_reach(float * subject, float target) {
 
 //STATIC FUNCTIONS
 
+//Linear model used initially to test the rk4
 static ROCKET_STATE_t rocket_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	ROCKET_STATE_t dx;
 
@@ -150,8 +151,8 @@ static ROCKET_STATE_t rocket_lin(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	return dx;
 }
 
-//CREATE A FIXED POINT MODEL
-//MAYBE NOT AS IT WORKS ON THE NDS
+
+
 static ROCKET_STATE_t rocket_model_earth(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	float GM = 1e3;
 	ROCKET_STATE_t dx;

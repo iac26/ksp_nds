@@ -28,8 +28,6 @@ static uint16_t * sprite_gfx;
 
 
 void graphics_main_config_sprite() {
-	//Set up memory bank to work in sprite mode (offset since we are using VRAM A for backgrounds)
-	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
 
 	//Initialize sprite manager and the engine
 	oamInit(&oamMain, SpriteMapping_1D_32, false);
@@ -44,9 +42,12 @@ void graphics_main_config_sprite() {
 
 
 void graphics_main_init() {
-	// everything in vram C
 
+	// memory for backgrounds
 	VRAM_A_CR = VRAM_ENABLE | VRAM_A_MAIN_BG;
+
+	// memory for sprites
+	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
 
 }
 
