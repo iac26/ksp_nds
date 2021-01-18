@@ -154,6 +154,7 @@ void game_intro(GAME_STATE_t * state){
 		}
 		else if(state->previous == PAUSE){
 			state->game_fsm = state->previous;
+			graphics_sub_config_ingame();
 			graphics_sub_config_pause();
 			return;
 		}
@@ -281,7 +282,6 @@ void game_pause(GAME_STATE_t * state) {
 
 	if(state->control_input.keysD & (KEY_START| KEY_TOUCH| KEY_A)) {
 			state->game_fsm = INGAME;
-			graphics_main_config_ingame();
 			graphics_sub_config_ingame();
 			return;
 		}
