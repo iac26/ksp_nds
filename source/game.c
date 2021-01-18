@@ -112,7 +112,7 @@ void game_init(GAME_STATE_t * state) {
 	state->rocket.xp = 6;
 	state->rocket.y = 70;
 	state->rocket.yp = 0;
-	state->rocket.a = 0;
+	state->rocket.a = 90;
 	state->rocket.ap = 0;
 	state->moon = 0;
 	graphics_main_config_splash();
@@ -227,7 +227,6 @@ void game_ingame(GAME_STATE_t * state) {
 		game_init_crash(state);
 		return;
 	}
-	//physics_world_boundary(&state->rocket);
 
 	IVEC_t orb = {state->rocket.x, state->rocket.y};
 

@@ -14,18 +14,7 @@ typedef enum {
 	INGAME,
 	CRASH,
 	PAUSE,
-	GAME_FSM_N
 }GAME_FSM_t;
-
-typedef enum {
-	LAUNCHPAD,
-	FLIGHT_ATMOS,
-	FLIGHT_EARTH,
-	FLIGHT_MOON,
-	LANDED,
-	CRASHED,
-	FLIGHT_FSM_N
-}FLIGHT_FSM_t;
 
 typedef enum {
 	EARTH,
@@ -36,7 +25,6 @@ typedef enum {
 typedef struct {
 	GAME_FSM_t game_fsm;
 	GAME_FSM_t previous;
-	FLIGHT_FSM_t flight_fsm;
 	CONTROLS_t control_input;
 	ROCKET_STATE_t rocket;
 	CRASH_TYPE_t crash_type;
