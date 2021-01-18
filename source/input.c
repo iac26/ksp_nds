@@ -8,17 +8,14 @@
 
 
 
-
-
 static void handle_touch_hold(CONTROLS_t * control);
 
 static void handle_touch_down(CONTROLS_t * control);
 
 
-void input_init() {
-
+void input_init(CONTROLS_t * control) {
+	control->intro = 0;
 }
-
 
 
 
@@ -37,9 +34,14 @@ void input_read(CONTROLS_t * control) {
 		handle_touch_down(control);
 	}
 
+	if(keysD & KEY_SELECT) {
+		control->intro = !control->intro;
+	}
+
 	control->keysD  = keysD;
 	control->keysH  = keysH;
 	control->keysDR = keysDR;
+
 }
 
 

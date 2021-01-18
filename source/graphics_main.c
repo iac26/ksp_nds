@@ -10,6 +10,7 @@
 #include "planets.h"
 #include "crash_moon.h"
 #include "crash_earth.h"
+#include "crash_wall.h"
 #include "rocket.h"
 
 //#define	SPRITE_WIDTH	8
@@ -18,7 +19,7 @@
 static uint16_t * simulated_fb = 0;
 
 //Pointer to the graphic buffer where to store the sprite
-static uint16_t* sprite_gfx;
+static uint16_t * sprite_gfx;
 
 
 void graphics_main_config_sprite() {
@@ -113,8 +114,8 @@ void graphics_main_config_crash_wall() {
 	REG_BG2PB = 0;
 	REG_BG2PD = 256;
 
-	swiCopy(crash_earthBitmap, BG_BMP_RAM(0), crash_earthBitmapLen/2);
-	swiCopy(crash_earthPal, BG_PALETTE, crash_earthPalLen/2);
+	swiCopy(crash_wallBitmap, BG_BMP_RAM(0), crash_wallBitmapLen/2);
+	swiCopy(crash_wallPal, BG_PALETTE, crash_wallPalLen/2);
 
 }
 

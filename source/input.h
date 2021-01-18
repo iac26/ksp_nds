@@ -1,6 +1,8 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#include <nds.h>
+
 
 typedef enum {
 	AP_KILL_ROT = 0,
@@ -16,6 +18,7 @@ typedef struct {
 	int slider_pos;
 	int slider_val;
 	AP_MODE_t ap_mode;
+	uint8_t intro;
 	unsigned keysD;
 	unsigned keysH;
 	unsigned keysDR;
@@ -25,7 +28,6 @@ typedef struct {
 void input_init();
 
 void input_read(CONTROLS_t * control);
-
 
 
 

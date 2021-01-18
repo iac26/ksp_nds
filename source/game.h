@@ -14,7 +14,6 @@ typedef enum {
 	INGAME,
 	CRASH,
 	PAUSE,
-	INTRO,
 	GAME_FSM_N
 }GAME_FSM_t;
 
@@ -41,6 +40,7 @@ typedef struct {
 	CONTROLS_t control_input;
 	ROCKET_STATE_t rocket;
 	CRASH_TYPE_t crash_type;
+	uint8_t intro;
 	float r_moon;
 	float r_earth;
 	float r;
