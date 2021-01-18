@@ -268,8 +268,8 @@ void game_crash(GAME_STATE_t * state){
 
 
 	if(state->control_input.keysD & (KEY_START | KEY_TOUCH | KEY_B | KEY_A)) {
-		game_init(state);
 		graphics_main_clear_path();
+		game_init(state);
 		return;
 	}
 }
@@ -282,8 +282,8 @@ void game_pause(GAME_STATE_t * state) {
 		return;
 	}
 	if(state->control_input.keysD & KEY_B) {
-		game_init(state);
 		graphics_main_clear_path();
+		game_init(state);
 		return;
 	}
 }
