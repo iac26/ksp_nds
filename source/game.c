@@ -7,6 +7,7 @@
 #include "game.h"
 #include "physics.h"
 #include "positions.h"
+#include "sound.h"
 
 
 
@@ -260,6 +261,7 @@ void game_init_crash(GAME_STATE_t * state) {
 	}
 
 	graphics_sub_config_crash();
+	sound_crash();
 }
 
 void game_crash(GAME_STATE_t * state){

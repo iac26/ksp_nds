@@ -31,14 +31,16 @@ int main(void) {
 	input_init(&game_state.control_input);
 
 
-	sound_rocket();
-
 	graphics_main_init();
 	graphics_sub_init();
 
 	game_state.game_fsm = SPLASH;
 
 	//do the right configuration for the main and sub screens
+
+	sound_ambiance();
+
+
 
 
 	while(1) {

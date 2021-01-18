@@ -11,13 +11,9 @@
 
 void sound_init();
 
-void sound_rocket();
+void sound_crash();
 
-void sound_play();
-
-void sound_stop();
-
-
+void sound_ambiance();
 
 
 #endif

@@ -5,21 +5,23 @@
 void sound_init() {
 	//Init the sound library
 	mmInitDefaultMem((mm_addr)soundbank_bin);
-	mmLoadEffect(SFX_AMBIANCE);
+	mmLoadEffect(SFX_CRASH);
+	mmLoad(MOD_CLASSICA);
 }
 
 
-void sound_rocket() {
-	//Declare a sound effect
+void sound_crash() {
 	mm_sound_effect sound;
-	//Set the id of the sound effect with the input parameter
-	sound.id = 0;
-	//Set the rate to the default one (1024)
+	sound.id = SFX_CRASH;
 	sound.rate = 1024;
-	//Set the volume to the maximum (range 0...255)
 	sound.volume = 255;
-	//Set the panning depending on the effect (0-left....255-right)
-
-	//Play the effect using the sound structure
+	sound.panning = 127;
 	mmEffectEx(&sound);
+}
+
+void sound_ambiance() {
+	//Start playing music in a loop
+	mmStart(MOD_CLASSICA, MM_PLAY_LOOP);
+	//Set module volume to 512 (range 0...1024) using the function mmSetModuleVolume(...)
+	mmSetModuleVolume(512);
 }
