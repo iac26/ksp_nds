@@ -207,6 +207,8 @@ void game_ingame(GAME_STATE_t * state) {
 		if(state->r < MOON_RAD){
 			state->game_fsm = CRASH;
 			state->crash_type = MOON;
+			game_init_crash(state);
+			return;
 		}
 	} else {
 		state->phi = state->phi_earth;
@@ -215,11 +217,14 @@ void game_ingame(GAME_STATE_t * state) {
 		if(state->r < EARTH_RAD){
 			state->game_fsm = CRASH;
 			state->crash_type = EARTH;
+			game_init_crash(state);
+			return;
 		}
 	}
 	if((state->rocket.x < WORLD_X_MIN)|(state->rocket.y < WORLD_Y_MIN)|(state->rocket.x >= WORLD_X_MAX)|(state->rocket.y >= WORLD_Y_MAX)){
 		state->game_fsm = CRASH;
 		state->crash_type = WALL;
+		game_init_crash(state);
 		return;
 	}
 	//physics_world_boundary(&state->rocket);
@@ -265,8 +270,6 @@ void game_init_crash(GAME_STATE_t * state) {
 }
 
 void game_crash(GAME_STATE_t * state){
-
-
 	if(state->control_input.keysD & (KEY_START | KEY_TOUCH | KEY_B | KEY_A)) {
 		graphics_main_clear_path();
 		game_init(state);
