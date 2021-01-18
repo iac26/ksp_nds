@@ -45,13 +45,12 @@ int main(void) {
 
 	while(1) {
 		swiWaitForVBlank();
-		input_read(&game_state.control_input);
+		input_read(&game_state.control_input, game_state.game_fsm==INGAME?1:0);
 		if(game_state.control_input.intro) {
 			game_intro(&game_state);
 			continue;
 		}else{
 			game_exit_intro(&game_state);
-
 		}
 		switch(game_state.game_fsm) {
 		case SPLASH:

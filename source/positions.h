@@ -114,4 +114,21 @@
 
 
 
+//abort button
+
+#define ABORT_X		(16)
+#define ABORT_Y		(48)
+
+#define ABORT_W		(24)
+#define ABORT_H		(96)
+
+#define ABORT_X1	(ABORT_X)
+#define ABORT_X2	(ABORT_X+ABORT_W)
+#define ABORT_Y1	(ABORT_Y)
+#define ABORT_Y2	(ABORT_Y+ABORT_H)
+
+#define ABORT_INSIDE(x, y)  INSIDE(ABORT_X1, ABORT_X2, ABORT_Y1, ABORT_Y2, x, y)
+
+
+
 #endif

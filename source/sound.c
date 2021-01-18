@@ -6,7 +6,7 @@ void sound_init() {
 	//Init the sound library
 	mmInitDefaultMem((mm_addr)soundbank_bin);
 	mmLoadEffect(SFX_CRASH);
-	mmLoad(MOD_CLASSICA);
+	mmLoad(MOD_AMBIANCE);
 }
 
 
@@ -21,7 +21,7 @@ void sound_crash() {
 
 void sound_ambiance() {
 	//Start playing music in a loop
-	mmStart(MOD_CLASSICA, MM_PLAY_LOOP);
+	mmStart(MOD_AMBIANCE, MM_PLAY_LOOP);
 	//Set module volume to 512 (range 0...1024) using the function mmSetModuleVolume(...)
 	mmSetModuleVolume(512);
 }

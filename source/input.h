@@ -19,6 +19,7 @@ typedef struct {
 	int slider_val;
 	AP_MODE_t ap_mode;
 	uint8_t intro;
+	uint8_t abort;
 	unsigned keysD;
 	unsigned keysH;
 	unsigned keysDR;
@@ -27,7 +28,7 @@ typedef struct {
 
 void input_init();
 
-void input_read(CONTROLS_t * control);
+void input_read(CONTROLS_t * control, uint8_t touch_active);
 
 
 

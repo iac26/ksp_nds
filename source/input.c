@@ -15,22 +15,23 @@ static void handle_touch_down(CONTROLS_t * control);
 
 void input_init(CONTROLS_t * control) {
 	control->intro = 0;
+	control->abort = 0;
 }
 
 
 
 
-void input_read(CONTROLS_t * control) {
+void input_read(CONTROLS_t * control, uint8_t touch_active) {
 	scanKeys();
 
 	unsigned keysH  = keysHeld();
 	unsigned keysD  = keysDown();
 	unsigned keysDR = keysDownRepeat();
 
-	if(keysH & KEY_TOUCH) {
+	if((keysH & KEY_TOUCH) && touch_active) {
 		handle_touch_hold(control);
 	}
-	if(keysD & KEY_TOUCH) {
+	if((keysD & KEY_TOUCH) && touch_active) {
 		handle_touch_down(control);
 	}
 
@@ -41,11 +42,7 @@ void input_read(CONTROLS_t * control) {
 	control->keysD  = keysD;
 	control->keysH  = keysH;
 	control->keysDR = keysDR;
-
 }
-
-
-
 
 
 
@@ -79,6 +76,10 @@ static void handle_touch_down(CONTROLS_t * control) {
 		control->ap_mode = control->ap_mode == AP_RADIAL?AP_OFF:AP_RADIAL;
 	} else if (AP_ARAD_INSIDE(touch.px, touch.py)) {
 		control->ap_mode = control->ap_mode == AP_ANTIRADIAL?AP_OFF:AP_ANTIRADIAL;
+	}
+
+	if(ABORT_INSIDE(touch.px, touch.py)) {
+		control->abort = !control->abort;
 	}
 
 

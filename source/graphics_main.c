@@ -23,6 +23,9 @@ static uint16_t * simulated_fb = 0;
 //Pointer to the graphic buffer where to store the sprite
 static uint16_t * sprite_gfx;
 
+#define BG_PATH		(0)
+#define BG_IMG		(3)
+
 
 void graphics_main_config_sprite() {
 	//Set up memory bank to work in sprite mode (offset since we are using VRAM A for backgrounds)
@@ -49,28 +52,11 @@ void graphics_main_init() {
 
 
 void graphics_main_config_splash() {
-	//only bg3 active
-	REG_DISPCNT = MODE_5_2D | DISPLAY_BG3_ACTIVE;
-
-	//background 3
-	BGCTRL[3] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
-
-	//Affine Marix Transformation
-	REG_BG3PA = 256;
-	REG_BG3PC = 0;
-	REG_BG3PB = 0;
-	REG_BG3PD = 256;
-
-	swiCopy(splashBitmap, BG_BMP_RAM(0), splashBitmapLen/2);
-	swiCopy(splashPal, BG_PALETTE, splashPalLen/2);
-}
-
-void graphics_main_config_crash_moon() {
 	//only bg2 active
 	REG_DISPCNT = MODE_5_2D | DISPLAY_BG2_ACTIVE;
 
-	//background 3
-	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+	//background 2
+	BGCTRL[2] = BG_BMP_BASE(BG_IMG) | (u16) BgSize_B8_256x256;
 
 	//Affine Marix Transformation
 	REG_BG2PA = 256;
@@ -78,7 +64,24 @@ void graphics_main_config_crash_moon() {
 	REG_BG2PB = 0;
 	REG_BG2PD = 256;
 
-	swiCopy(crash_moonBitmap, BG_BMP_RAM(0), crash_moonBitmapLen/2);
+	swiCopy(splashBitmap, BG_BMP_RAM(BG_IMG), splashBitmapLen/2);
+	swiCopy(splashPal, BG_PALETTE, splashPalLen/2);
+}
+
+void graphics_main_config_crash_moon() {
+	//only bg2 active
+	REG_DISPCNT = MODE_5_2D | DISPLAY_BG2_ACTIVE;
+
+	//background 2
+	BGCTRL[2] = BG_BMP_BASE(BG_IMG) | (u16) BgSize_B8_256x256;
+
+	//Affine Marix Transformation
+	REG_BG2PA = 256;
+	REG_BG2PC = 0;
+	REG_BG2PB = 0;
+	REG_BG2PD = 256;
+
+	swiCopy(crash_moonBitmap, BG_BMP_RAM(BG_IMG), crash_moonBitmapLen/2);
 	swiCopy(crash_moonPal, BG_PALETTE, crash_moonPalLen/2);
 }
 
@@ -87,8 +90,8 @@ void graphics_main_config_crash_earth() {
 	//only bg2 active
 	REG_DISPCNT = MODE_5_2D | DISPLAY_BG2_ACTIVE;
 
-	//background 3
-	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+	//background 2
+	BGCTRL[2] = BG_BMP_BASE(BG_IMG) | (u16) BgSize_B8_256x256;
 
 	//Affine Marix Transformation
 	REG_BG2PA = 256;
@@ -96,7 +99,7 @@ void graphics_main_config_crash_earth() {
 	REG_BG2PB = 0;
 	REG_BG2PD = 256;
 
-	swiCopy(crash_earthBitmap, BG_BMP_RAM(0), crash_earthBitmapLen/2);
+	swiCopy(crash_earthBitmap, BG_BMP_RAM(BG_IMG), crash_earthBitmapLen/2);
 	swiCopy(crash_earthPal, BG_PALETTE, crash_earthPalLen/2);
 
 
@@ -107,8 +110,8 @@ void graphics_main_config_crash_wall() {
 	//only bg2 active
 	REG_DISPCNT = MODE_5_2D | DISPLAY_BG2_ACTIVE;
 
-	//background 3
-	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+	//background 2
+	BGCTRL[2] = BG_BMP_BASE(BG_IMG) | (u16) BgSize_B8_256x256;
 
 	//Affine Marix Transformation
 	REG_BG2PA = 256;
@@ -116,18 +119,18 @@ void graphics_main_config_crash_wall() {
 	REG_BG2PB = 0;
 	REG_BG2PD = 256;
 
-	swiCopy(crash_wallBitmap, BG_BMP_RAM(0), crash_wallBitmapLen/2);
+	swiCopy(crash_wallBitmap, BG_BMP_RAM(BG_IMG), crash_wallBitmapLen/2);
 	swiCopy(crash_wallPal, BG_PALETTE, crash_wallPalLen/2);
 
 }
 
 
 void graphics_main_config_intro() {
-	//only bg2 active
+	//only bg3 active
 	REG_DISPCNT = MODE_5_2D | DISPLAY_BG3_ACTIVE;
 
 	//background 3
-	BGCTRL[3] = BG_BMP_BASE(3) | (u16) BgSize_B8_256x256;
+	BGCTRL[3] = BG_BMP_BASE(BG_IMG) | (u16) BgSize_B8_256x256;
 
 	//Affine Marix Transformation
 	REG_BG3PA = 256;
@@ -135,7 +138,7 @@ void graphics_main_config_intro() {
 	REG_BG3PB = 0;
 	REG_BG3PD = 256;
 
-	swiCopy(introBitmap, BG_BMP_RAM(3), introBitmapLen/2);
+	swiCopy(introBitmap, BG_BMP_RAM(BG_IMG), introBitmapLen/2);
 	swiCopy(introPal, BG_PALETTE, introPalLen/2);
 }
 
@@ -147,7 +150,7 @@ void graphics_main_config_ingame() {
 	//BG2 and BG3 active
 	REG_DISPCNT = MODE_5_2D | DISPLAY_BG3_ACTIVE | DISPLAY_BG2_ACTIVE;
 	//background 2
-	BGCTRL[2] = BG_BMP_BASE(0) | (u16) BgSize_B8_256x256;
+	BGCTRL[2] = BG_BMP_BASE(BG_PATH) | (u16) BgSize_B8_256x256;
 
 	//Affine Marix Transformation
 	REG_BG2PA = 256;
@@ -157,14 +160,14 @@ void graphics_main_config_ingame() {
 
 	unsigned short * pal = BG_PALETTE;
 
-	simulated_fb = BG_BMP_RAM(0);
+	simulated_fb = BG_BMP_RAM(BG_PATH);
 
 	pal[0] = RGB15(0, 0, 0);
 	pal[255] = RGB15(31, 31, 31);
 	pal[254] = RGB15(0, 15, 0);
 
 
-	BGCTRL[3] = BG_BMP_BASE(3) | (u16) BgSize_B8_256x256;
+	BGCTRL[3] = BG_BMP_BASE(BG_IMG) | (u16) BgSize_B8_256x256;
 
 	//Affine Marix Transformation
 	REG_BG3PA = 256;
@@ -172,7 +175,7 @@ void graphics_main_config_ingame() {
 	REG_BG3PB = 0;
 	REG_BG3PD = 256;
 
-	swiCopy(planetsBitmap, BG_BMP_RAM(3), planetsBitmapLen/2);
+	swiCopy(planetsBitmap, BG_BMP_RAM(BG_IMG), planetsBitmapLen/2);
 	swiCopy(planetsPal, BG_PALETTE, planetsPalLen/2);
 
 	//Configure sprites and fill graphics

@@ -106,13 +106,13 @@ float auto_pilot(GAME_STATE_t * state) {
 void game_init(GAME_STATE_t * state) {
 	state->game_fsm = SPLASH;
 	state->control_input.ap_mode = AP_OFF;
-	state->control_input.slider_pos = 3;
+	state->control_input.slider_pos = SLIDER_POS_X;
 	state->control_input.slider_val = 0;
 	state->rocket.x = 128;
 	state->rocket.xp = 6;
 	state->rocket.y = 70;
 	state->rocket.yp = 0;
-	state->rocket.a = 90;
+	state->rocket.a = M_PI_2;
 	state->rocket.ap = 0;
 	state->moon = 0;
 	graphics_main_config_splash();
@@ -125,6 +125,7 @@ void game_splash(GAME_STATE_t * state) {
 		graphics_main_config_ingame();
 		graphics_sub_config_ingame();
 		graphics_main_clear_path();
+		state->control_input.abort = 0;
 	}
 
 }
@@ -169,7 +170,7 @@ void game_ingame(GAME_STATE_t * state) {
 		graphics_sub_config_pause();
 		return;
 	}
-	if(state->control_input.keysD & KEY_B) {
+	if((state->control_input.keysD & KEY_B) || state->control_input.abort) {
 		graphics_main_clear_path();
 		game_init(state);
 		return;

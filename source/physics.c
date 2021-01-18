@@ -12,7 +12,7 @@
 
 
 
-static float rk4(float x, float h, float (*f)(float));
+//static float rk4(float x, float h, float (*f)(float));
 
 static ROCKET_STATE_t rocket_integrate_rk4(ROCKET_STATE_t x, ROCKET_INPUT_t u, float h, ROCKET_STATE_t (*f)(ROCKET_STATE_t, ROCKET_INPUT_t));
 
@@ -200,6 +200,7 @@ static ROCKET_STATE_t rocket_model_moon(ROCKET_STATE_t x, ROCKET_INPUT_t u) {
 	return dx;
 }
 
+/*
 
 static float rk4(float x, float h, float (*f)(float)) {
 	float k1 = f(x);
@@ -208,6 +209,8 @@ static float rk4(float x, float h, float (*f)(float)) {
 	float k4 = f(x + h * k3);
 	return x + h/6*(k1 + 2*k2 + 2*k3 + k4);
 }
+
+*/
 
 static ROCKET_STATE_t rocket_integrate_rk4(ROCKET_STATE_t x, ROCKET_INPUT_t u, float h, ROCKET_STATE_t (*f)(ROCKET_STATE_t, ROCKET_INPUT_t)) {
 	ROCKET_STATE_t k1, k2, k3, k4, tx, dx = {0};
@@ -252,42 +255,3 @@ static ROCKET_STATE_t rocket_integrate_rk4(ROCKET_STATE_t x, ROCKET_INPUT_t u, f
 
 	return dx;
 }
-
-/*
-static ROCKET_STATE_t rocket_integrate_rk4(ROCKET_STATE_t x, ROCKET_INPUT_t u, float h, ROCKET_STATE_t (*f)(ROCKET_STATE_t, ROCKET_INPUT_t)) {
-	ROCKET_STATE_t k1, k2, k3, k4, dx = {0};
-	float * px  = &( x.x);
-	float * p1  = &(k1.x);
-	float * p2  = &(k2.x);
-	float * p3  = &(k3.x);
-	float * p4  = &(k4.x);
-	float * pdx = &(dx.x);
-
-	k1 = f(x, u);
-
-	for(int i = 0; i < ROCKET_STATE_N; i++) {
-		p2[i] = px[i] + h/2 + p1[i];
-	}
-
-	k2 = f(k2, u);
-
-	for(int i = 0; i < ROCKET_STATE_N; i++) {
-		p3[i] = px[i] + h/2 + p2[i];
-	}
-
-	k3 = f(k3, u);
-
-	for(int i = 0; i < ROCKET_STATE_N; i++) {
-		p4[i] = px[i] + h + p3[i];
-	}
-
-	k4 = f(k4, u);
-
-	for(int i = 0; i < ROCKET_STATE_N; i++) {
-		pdx[i] = h/6*(p1[i] + 2*p2[i] + 2*p3[i] + p4[i]);
-	}
-
-	return dx;
-}
-
-*/
