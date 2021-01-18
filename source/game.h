@@ -30,6 +30,7 @@ typedef enum {
 
 typedef struct {
 	GAME_FSM_t game_fsm;
+	GAME_FSM_t previous;
 	FLIGHT_FSM_t flight_fsm;
 	CONTROLS_t control_input;
 	ROCKET_STATE_t rocket;

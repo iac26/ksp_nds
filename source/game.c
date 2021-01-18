@@ -119,7 +119,7 @@ void game_init(GAME_STATE_t * state) {
 }
 
 void game_splash(GAME_STATE_t * state) {
-	if(state->control_input.keysD & (KEY_START | KEY_TOUCH)) {
+	if(state->control_input.keysD & (KEY_START | KEY_TOUCH | KEY_A )) {
 		state->game_fsm = INGAME;
 		graphics_main_config_ingame();
 		graphics_sub_config_ingame();
@@ -128,33 +128,69 @@ void game_splash(GAME_STATE_t * state) {
 		state->game_fsm = INTRO;
 		graphics_main_config_intro();
 		graphics_sub_config_intro();
+		state->previous = SPLASH;
 	}
 
 }
 
 void game_intro(GAME_STATE_t * state){
-	if(state->control_input.keysD & KEY_START) {
+	if(state->control_input.keysD & (KEY_START | KEY_A)) {
 			state->game_fsm = INGAME;
 			graphics_main_config_ingame();
 			graphics_sub_config_ingame();
 	}
-	if(state->control_input.keysD & KEY_SELECT) {
-		state->game_fsm = SPLASH;
-		return;
+	if(state->control_input.keysD & (KEY_SELECT)) {
+		if(state->previous == SPLASH){
+			state->game_fsm = state->previous;
+			graphics_main_config_splash();
+			graphics_sub_config_splash();
+			return;
+		}
+		else if(state->previous == INGAME){
+			state->game_fsm = state->previous;
+			graphics_main_config_ingame();
+			graphics_sub_config_ingame();
+			return;
+		}
+		else if(state->previous == PAUSE){
+			state->game_fsm = state->previous;
+			graphics_sub_config_pause();
+			return;
+		}
+		else if(state->previous == CRASH){
+			state->game_fsm = SPLASH;
+			graphics_main_config_splash();
+			graphics_sub_config_splash();
+			return;
+		}
 	}
+	if(state->control_input.keysD & (KEY_B | KEY_TOUCH)) {
+			state->game_fsm = SPLASH;
+			graphics_main_config_splash();
+			graphics_sub_config_splash();
+			return;
+		}
 }
 void game_ingame(GAME_STATE_t * state) {
 	//update game dynamics
 
-	if(state->control_input.keysD & KEY_START) {
+	if(state->control_input.keysD & (KEY_START | KEY_A)) {
 			state->game_fsm = PAUSE;
 			graphics_sub_config_pause();
 			return;
 		}
 	if(state->control_input.keysD & KEY_B) {
 			state->game_fsm = SPLASH;
+			graphics_main_config_splash();
+			graphics_sub_config_splash();
 			return;
 		}
+	if(state->control_input.keysD & (KEY_SELECT)) {
+		state->game_fsm = INTRO;
+		graphics_main_config_intro();
+		graphics_sub_config_intro();
+		state->previous = INGAME;
+	}
 
 	//update control inputs
 	ROCKET_INPUT_t input;
@@ -203,9 +239,6 @@ void game_ingame(GAME_STATE_t * state) {
 
 	IVEC_t orb[] = {{state->rocket.x, state->rocket.y}};
 
-
-
-
 	//update display
 	graphics_sub_rocket_ingame(get_rocket_type(state->control_input));
 	graphics_sub_put_slider(state->control_input.slider_pos);
@@ -230,20 +263,38 @@ void game_crash(GAME_STATE_t * state){
 		graphics_main_config_crash_wall();
 	}
 	graphics_sub_config_crash();
-	if(state->control_input.keysD & (KEY_START | KEY_TOUCH | KEY_B)) {
+	if(state->control_input.keysD & (KEY_START | KEY_TOUCH | KEY_B | KEY_A)) {
 		state->game_fsm = SPLASH;
 		graphics_main_config_splash();
 		graphics_sub_config_splash();
 		return;
 	}
+	if(state->control_input.keysD & (KEY_SELECT)) {
+		state->game_fsm = INTRO;
+		graphics_main_config_intro();
+		graphics_sub_config_intro();
+		state->previous = CRASH;
+	}
 }
 
 void game_pause(GAME_STATE_t * state) {
 
-	if(state->control_input.keysD & (KEY_START| KEY_START)) {
+	if(state->control_input.keysD & (KEY_START| KEY_TOUCH| KEY_A)) {
 			state->game_fsm = INGAME;
 			graphics_main_config_ingame();
 			graphics_sub_config_ingame();
+			return;
+		}
+	if(state->control_input.keysD & (KEY_SELECT)) {
+		state->game_fsm = INTRO;
+		graphics_main_config_intro();
+		graphics_sub_config_intro();
+		state->previous = PAUSE;
+	}
+	if(state->control_input.keysD & KEY_B) {
+			state->game_fsm = SPLASH;
+			graphics_main_config_splash();
+			graphics_sub_config_splash();
 			return;
 		}
 }
