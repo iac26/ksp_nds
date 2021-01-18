@@ -12,7 +12,7 @@
 #include "input.h"
 #include "game.h"
 
-
+#include "sound.h"
 
 
 
@@ -26,8 +26,12 @@ int main(void) {
 
 	game_init(&game_state);
 
+	sound_init();
+
 	input_init(&game_state.control_input);
 
+
+	sound_rocket();
 
 	graphics_main_init();
 	graphics_sub_init();
