@@ -52,9 +52,15 @@ void game_init(GAME_STATE_t * state);
 
 void game_splash(GAME_STATE_t * state);
 
+void game_intro(GAME_STATE_t * state);
+
 void game_ingame(GAME_STATE_t * state);
 
-void game_end(GAME_STATE_t * state);
+void game_crash(GAME_STATE_t * state);
+
+void game_pause(GAME_STATE_t * state);
+
+
 
 
 

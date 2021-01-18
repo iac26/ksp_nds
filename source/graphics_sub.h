@@ -17,6 +17,12 @@ void graphics_sub_rocket_ingame(int rocket);
 
 void graphics_sub_config_splash();
 
+void graphics_sub_config_crash();
+
+void graphics_sub_config_pause();
+
+void graphics_sub_config_intro();
+
 void graphics_sub_put_digit(unsigned short digit, unsigned short x, unsigned short y);
 
 void graphics_sub_put_slider(unsigned short x);

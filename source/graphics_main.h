@@ -3,12 +3,15 @@
 
 #include "physics.h"
 
+void configureSprites();
 void graphics_main_init();
 
 void graphics_main_config_ingame();
 void graphics_main_config_splash();
 void graphics_main_config_crash_moon();
 void graphics_main_config_crash_earth();
+void graphics_main_config_crash_wall();
+void graphics_main_config_intro();
 
 
 

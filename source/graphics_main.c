@@ -12,8 +12,8 @@
 #include "crash_earth.h"
 #include "rocket.h"
 
-#define	SPRITE_WIDTH	32
-#define	SPRITE_HEIGHT	32
+//#define	SPRITE_WIDTH	8
+//#define	SPRITE_HEIGHT	8
 
 static unsigned short * simulated_fb = 0;
 
@@ -29,7 +29,7 @@ void configureSprites() {
 	oamInit(&oamMain, SpriteMapping_1D_32, false);
 
 	//Allocate space for the graphic to show in the sprite
-	gfx = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
+	gfx = oamAllocateGfx(&oamMain, SpriteSize_8x8, SpriteColorFormat_256Color);
 
 	//Copy data for the graphic (palette and bitmap)
 	swiCopy(rocketPal, SPRITE_PALETTE, rocketPalLen/2);
@@ -185,16 +185,18 @@ void graphics_main_path(IVEC_t * pos, int len) {
 	int i;
 	for(i = 0; i < len; i++) {
 		simulated_fb[FB_IX(pos[i].x, pos[i].y)/2] |= pos[i].x%2?254<<8:254;
-		//int theta = acos(pos[i].x/sqrt((pos[i].x^2)+(pos[i].y^2)));
+		//int ctheta = pos[i].x/sqrt((pos[i].x^2)+(pos[i].y^2));
+		//int stheta=sin(acos(ctheta));
+		//oamSetAffineIndex(&oamMain,0,15,false);
 		oamSet(&oamMain, 	// oam handler
 		    		0,				// Number of sprite
-		    		(pos[i].x-16), (pos[i].y-16),			// Coordinates
+		    		(pos[i].x-4), (pos[i].y-4),			// Coordinates
 		    		0,				// Priority
 		    		0,				// Palette to use
-		    		SpriteSize_32x32,			// Sprite size
+		    		SpriteSize_8x8,			// Sprite size
 		    		SpriteColorFormat_256Color,	// Color format
 		    		gfx,			// Loaded graphic to display
-		    		-1,				// Affine rotation to use (-1 none)
+		    		15,				// Affine rotation to use (-1 none)
 		    		false,			// Double size if rotating
 		    		false,			// Hide this sprite
 		    		false, false,	// Horizontal or vertical flip
