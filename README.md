@@ -103,6 +103,7 @@ Ingame first prototype
 * BG images for: wall crash, sub crash screen, instruction pannels, pause controls
 * exact list of buttons that lead from one screen to another
 * sprite rotation?
+* sound in the game
 
 
 
