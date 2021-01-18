@@ -1,4 +1,4 @@
-input.o: /home/nds/files/propro/ksp_nds/source/input.c \
+input.o: /home/nds/files/ksp_nds/source/input.c \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -47,8 +47,8 @@ input.o: /home/nds/files/propro/ksp_nds/source/input.c \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
-  /home/nds/files/propro/ksp_nds/source/input.h \
-  /home/nds/files/propro/ksp_nds/source/positions.h
+  /home/nds/files/ksp_nds/source/input.h \
+  /home/nds/files/ksp_nds/source/positions.h
 
 /opt/devkitPro/libnds/include/nds.h:
 
@@ -146,6 +146,6 @@ input.o: /home/nds/files/propro/ksp_nds/source/input.c \
 
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
-/home/nds/files/propro/ksp_nds/source/input.h:
+/home/nds/files/ksp_nds/source/input.h:
 
-/home/nds/files/propro/ksp_nds/source/positions.h:
+/home/nds/files/ksp_nds/source/positions.h:

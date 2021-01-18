@@ -1,4 +1,4 @@
-game.o: /home/nds/files/propro/ksp_nds/source/game.c \
+game.o: /home/nds/files/ksp_nds/source/game.c \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -47,17 +47,17 @@ game.o: /home/nds/files/propro/ksp_nds/source/game.c \
   /opt/devkitPro/libnds/include/nds/arm9/sprite.h \
   /opt/devkitPro/libnds/include/nds/system.h \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
-  /home/nds/files/propro/ksp_nds/source/game.h \
-  /home/nds/files/propro/ksp_nds/source/input.h \
-  /home/nds/files/propro/ksp_nds/source/graphics_main.h \
-  /home/nds/files/propro/ksp_nds/source/physics.h \
-  /home/nds/files/propro/ksp_nds/source/graphics_sub.h \
-  /home/nds/files/propro/ksp_nds/source/positions.h \
-  /home/nds/files/propro/ksp_nds/source/sound.h \
+  /home/nds/files/ksp_nds/source/game.h \
+  /home/nds/files/ksp_nds/source/input.h \
+  /home/nds/files/ksp_nds/source/graphics_main.h \
+  /home/nds/files/ksp_nds/source/physics.h \
+  /home/nds/files/ksp_nds/source/graphics_sub.h \
+  /home/nds/files/ksp_nds/source/positions.h \
+  /home/nds/files/ksp_nds/source/sound.h \
   /opt/devkitPro/libnds/include/maxmod9.h \
   /opt/devkitPro/libnds/include/mm_types.h \
-  /home/nds/files/propro/ksp_nds/build/soundbank.h \
-  /home/nds/files/propro/ksp_nds/build/soundbank_bin.h
+  /home/nds/files/ksp_nds/build/soundbank.h \
+  /home/nds/files/ksp_nds/build/soundbank_bin.h
 
 /opt/devkitPro/libnds/include/nds.h:
 
@@ -155,24 +155,24 @@ game.o: /home/nds/files/propro/ksp_nds/source/game.c \
 
 /opt/devkitPro/libnds/include/nds/arm9/decompress.h:
 
-/home/nds/files/propro/ksp_nds/source/game.h:
+/home/nds/files/ksp_nds/source/game.h:
 
-/home/nds/files/propro/ksp_nds/source/input.h:
+/home/nds/files/ksp_nds/source/input.h:
 
-/home/nds/files/propro/ksp_nds/source/graphics_main.h:
+/home/nds/files/ksp_nds/source/graphics_main.h:
 
-/home/nds/files/propro/ksp_nds/source/physics.h:
+/home/nds/files/ksp_nds/source/physics.h:
 
-/home/nds/files/propro/ksp_nds/source/graphics_sub.h:
+/home/nds/files/ksp_nds/source/graphics_sub.h:
 
-/home/nds/files/propro/ksp_nds/source/positions.h:
+/home/nds/files/ksp_nds/source/positions.h:
 
-/home/nds/files/propro/ksp_nds/source/sound.h:
+/home/nds/files/ksp_nds/source/sound.h:
 
 /opt/devkitPro/libnds/include/maxmod9.h:
 
 /opt/devkitPro/libnds/include/mm_types.h:
 
-/home/nds/files/propro/ksp_nds/build/soundbank.h:
+/home/nds/files/ksp_nds/build/soundbank.h:
 
-/home/nds/files/propro/ksp_nds/build/soundbank_bin.h:
+/home/nds/files/ksp_nds/build/soundbank_bin.h:

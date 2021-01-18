@@ -1,5 +1,5 @@
-sound.o: /home/nds/files/propro/ksp_nds/source/sound.c \
-  /home/nds/files/propro/ksp_nds/source/sound.h \
+sound.o: /home/nds/files/ksp_nds/source/sound.c \
+  /home/nds/files/ksp_nds/source/sound.h \
   /opt/devkitPro/libnds/include/nds.h \
   /opt/devkitPro/libnds/include/nds/libversion.h \
   /opt/devkitPro/libnds/include/nds/ndstypes.h \
@@ -50,10 +50,10 @@ sound.o: /home/nds/files/propro/ksp_nds/source/sound.c \
   /opt/devkitPro/libnds/include/nds/arm9/decompress.h \
   /opt/devkitPro/libnds/include/maxmod9.h \
   /opt/devkitPro/libnds/include/mm_types.h \
-  /home/nds/files/propro/ksp_nds/build/soundbank.h \
-  /home/nds/files/propro/ksp_nds/build/soundbank_bin.h
+  /home/nds/files/ksp_nds/build/soundbank.h \
+  /home/nds/files/ksp_nds/build/soundbank_bin.h
 
-/home/nds/files/propro/ksp_nds/source/sound.h:
+/home/nds/files/ksp_nds/source/sound.h:
 
 /opt/devkitPro/libnds/include/nds.h:
 
@@ -155,6 +155,6 @@ sound.o: /home/nds/files/propro/ksp_nds/source/sound.c \
 
 /opt/devkitPro/libnds/include/mm_types.h:
 
-/home/nds/files/propro/ksp_nds/build/soundbank.h:
+/home/nds/files/ksp_nds/build/soundbank.h:
 
-/home/nds/files/propro/ksp_nds/build/soundbank_bin.h:
+/home/nds/files/ksp_nds/build/soundbank_bin.h:

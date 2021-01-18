@@ -27,9 +27,7 @@ void graphics_main_config_intro();
 
 
 void graphics_main_draw_path(IVEC_t pos);
-
 void graphics_main_clear_path();
-
 void graphics_main_update_sprite(IVEC_t pos, float angle);
 
 

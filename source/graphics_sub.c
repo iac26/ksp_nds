@@ -62,9 +62,8 @@ void graphics_sub_init() {
 
 #define BG3_BMP_SPLASH	4
 
-
-
 #define EMPTY_TILE	36
+
 
 void graphics_sub_config_splash() {
 
