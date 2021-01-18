@@ -51,6 +51,8 @@ typedef struct {
 #define MOON_Y		(96)
 
 #define MOON_SOI	(30)
+#define MOON_RAD	(8)
+#define EARTH_RAD	(16)
 
 
 #define ROCKET_INERTIA (0.5)

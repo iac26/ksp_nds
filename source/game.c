@@ -67,11 +67,11 @@ float auto_pilot(GAME_STATE_t * state) {
 		mode = ANGLE;
 		break;
 	case AP_RADIAL:
-		target = theta - M_PI/2;
+		target = theta + M_PI/2;
 		mode = ANGLE;
 		break;
 	case AP_ANTIRADIAL:
-		target = theta + M_PI/2;
+		target = theta - M_PI/2;
 		mode = ANGLE;
 		break;
 	case AP_KILL_ROT:
@@ -222,23 +222,26 @@ void game_ingame(GAME_STATE_t * state) {
 		state->phi = state->phi_moon;
 		state->r = state->r_moon;
 		state->moon = 1;
-		if(state->r < 5){
+		if(state->r < MOON_RAD){
 			state->game_fsm = CRASH;
+			state->crash_type = MOON;
 		}
 	} else {
 		state->phi = state->phi_earth;
 		state->r = state->r_earth;
 		state->moon = 0;
-		if(state->r < 5){
+		if(state->r < EARTH_RAD){
 			state->game_fsm = CRASH;
+			state->crash_type = EARTH;
 		}
 	}
-	if((state->rocket.x ==0)|(state->rocket.y ==0)|(state->rocket.x == 256)|(state->rocket.y == 192)){
+	if((state->rocket.x == WORLD_X_MIN)|(state->rocket.y == WORLD_Y_MIN)|(state->rocket.x == WORLD_X_MAX)|(state->rocket.y == WORLD_Y_MAX)){
 		state->game_fsm = CRASH;
+		state->crash_type = WALL;
 	}
 	//physics_world_boundary(&state->rocket);
 
-	IVEC_t orb[] = {{state->rocket.x, state->rocket.y}};
+	IVEC_t orb = {state->rocket.x, state->rocket.y};
 
 	//update display
 	graphics_sub_rocket_ingame(get_rocket_type(state->control_input));
@@ -249,20 +252,28 @@ void game_ingame(GAME_STATE_t * state) {
 	graphics_sub_put_nav(state->rocket.a, 2);
 	graphics_sub_put_hor(ROCKET_CORRECT_ANGLE(state->phi), 0.2, -50+state->r);
 
-	graphics_main_path(orb, 1);
+	graphics_main_draw_path(orb);
+	graphics_main_update_sprite(orb, ROCKET_CORRECT_ANGLE(-state->rocket.a));
 
 }
 
 void game_crash(GAME_STATE_t * state){
-	if (state->moon == 1){
-		graphics_main_config_crash_moon();
-	}
-	else if (state->r < 5){
+
+	switch (state->crash_type) {
+	case EARTH:
 		graphics_main_config_crash_earth();
-	}
-	else {
+		break;
+
+	case MOON:
+		graphics_main_config_crash_moon();
+		break;
+
+	case WALL:
 		graphics_main_config_crash_wall();
+		break;
+
 	}
+
 	graphics_sub_config_crash();
 	if(state->control_input.keysD & (KEY_START | KEY_TOUCH | KEY_B | KEY_A)) {
 		state->game_fsm = SPLASH;
@@ -292,11 +303,11 @@ void game_pause(GAME_STATE_t * state) {
 		state->previous = PAUSE;
 	}
 	if(state->control_input.keysD & KEY_B) {
-			state->game_fsm = SPLASH;
-			graphics_main_config_splash();
-			graphics_sub_config_splash();
-			return;
-		}
+		state->game_fsm = SPLASH;
+		graphics_main_config_splash();
+		graphics_sub_config_splash();
+		return;
+	}
 }
 
 

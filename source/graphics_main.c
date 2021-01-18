@@ -15,13 +15,13 @@
 //#define	SPRITE_WIDTH	8
 //#define	SPRITE_HEIGHT	8
 
-static unsigned short * simulated_fb = 0;
+static uint16_t * simulated_fb = 0;
 
 //Pointer to the graphic buffer where to store the sprite
-u16* gfx;
+static uint16_t* sprite_gfx;
 
 
-void configureSprites() {
+void graphics_main_config_sprite() {
 	//Set up memory bank to work in sprite mode (offset since we are using VRAM A for backgrounds)
 	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
 
@@ -29,11 +29,11 @@ void configureSprites() {
 	oamInit(&oamMain, SpriteMapping_1D_32, false);
 
 	//Allocate space for the graphic to show in the sprite
-	gfx = oamAllocateGfx(&oamMain, SpriteSize_8x8, SpriteColorFormat_256Color);
+	sprite_gfx = oamAllocateGfx(&oamMain, SpriteSize_8x8, SpriteColorFormat_256Color);
 
 	//Copy data for the graphic (palette and bitmap)
 	swiCopy(rocketPal, SPRITE_PALETTE, rocketPalLen/2);
-	swiCopy(rocketTiles, gfx, rocketTilesLen/2);
+	swiCopy(rocketTiles, sprite_gfx, rocketTilesLen/2);
 }
 
 
@@ -175,35 +175,43 @@ void graphics_main_config_ingame() {
 	swiCopy(planetsPal, BG_PALETTE, planetsPalLen/2);
 
 	//Configure sprites and fill graphics
-	configureSprites();
+	graphics_main_config_sprite();
 
 }
 
 #define FB_IX(x, y) ((x) + (y)*256)
 
-void graphics_main_path(IVEC_t * pos, int len) {
-	int i;
-	for(i = 0; i < len; i++) {
-		simulated_fb[FB_IX(pos[i].x, pos[i].y)/2] |= pos[i].x%2?254<<8:254;
-		//int ctheta = pos[i].x/sqrt((pos[i].x^2)+(pos[i].y^2));
-		//int stheta=sin(acos(ctheta));
-		//oamSetAffineIndex(&oamMain,0,15,false);
-		oamSet(&oamMain, 	// oam handler
-		    		0,				// Number of sprite
-		    		(pos[i].x-4), (pos[i].y-4),			// Coordinates
-		    		0,				// Priority
-		    		0,				// Palette to use
-		    		SpriteSize_8x8,			// Sprite size
-		    		SpriteColorFormat_256Color,	// Color format
-		    		gfx,			// Loaded graphic to display
-		    		15,				// Affine rotation to use (-1 none)
-		    		false,			// Double size if rotating
-		    		false,			// Hide this sprite
-		    		false, false,	// Horizontal or vertical flip
-		    		false			// Mosaic
-		    		);
-		    	swiWaitForVBlank();
-		    	//Update the sprites
-				oamUpdate(&oamMain);
-	}
+void graphics_main_draw_path(IVEC_t pos) {
+	simulated_fb[FB_IX(pos.x, pos.y)/2] |= pos.x%2?254<<8:254;
+
+
 }
+
+#define RAD2DEG(a) (a*180/M_PI)
+
+void graphics_main_update_sprite(IVEC_t pos, float angle) {
+	oamSet(&oamMain, 	// oam handler
+			0,				// Number of sprite
+			(pos.x-4), (pos.y-4),			// Coordinates
+			0,				// Priority
+			0,				// Palette to use
+			SpriteSize_8x8,			// Sprite size
+			SpriteColorFormat_256Color,	// Color format
+			sprite_gfx,			// Loaded graphic to display
+			0,				// Affine rotation to use (-1 none)
+			false,			// Double size if rotating
+			false,			// Hide this sprite
+			false, false,	// Horizontal or vertical flip
+			false			// Mosaic
+			);
+
+	oamRotateScale(&oamMain, 0, degreesToAngle(RAD2DEG(angle)), 256, 256);
+
+	swiWaitForVBlank();
+	//Update the sprites
+	oamUpdate(&oamMain);
+}
+
+
+
+

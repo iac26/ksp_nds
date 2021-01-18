@@ -3,7 +3,7 @@
 
 #include "physics.h"
 
-void configureSprites();
+void graphics_main_config_sprite();
 void graphics_main_init();
 
 void graphics_main_config_ingame();
@@ -15,12 +15,9 @@ void graphics_main_config_intro();
 
 
 
-//simulated FB for tests IACOPO
+void graphics_main_draw_path(IVEC_t pos);
 
-
-
-void graphics_main_path(IVEC_t * pos, int len);
-
+void graphics_main_update_sprite(IVEC_t pos, float angle);
 
 
 #endif

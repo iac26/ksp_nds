@@ -28,12 +28,19 @@ typedef enum {
 	FLIGHT_FSM_N
 }FLIGHT_FSM_t;
 
+typedef enum {
+	EARTH,
+	MOON,
+	WALL
+}CRASH_TYPE_t;
+
 typedef struct {
 	GAME_FSM_t game_fsm;
 	GAME_FSM_t previous;
 	FLIGHT_FSM_t flight_fsm;
 	CONTROLS_t control_input;
 	ROCKET_STATE_t rocket;
+	CRASH_TYPE_t crash_type;
 	float r_moon;
 	float r_earth;
 	float r;
