@@ -170,8 +170,8 @@ void game_ingame(GAME_STATE_t * state) {
 		return;
 	}
 	if(state->control_input.keysD & KEY_B) {
-		game_init(state);
 		graphics_main_clear_path();
+		game_init(state);
 		return;
 	}
 

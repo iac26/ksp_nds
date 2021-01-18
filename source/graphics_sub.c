@@ -15,6 +15,9 @@
 #include "fusee2.h"
 #include "horizon.h"
 #include "splash2.h"
+#include "crash2.h"
+#include "intro2.h"
+#include "pause.h"
 
 #include "positions.h"
 
@@ -100,45 +103,49 @@ void graphics_sub_config_crash() {
 	REG_BG3X_SUB = 0;
 	REG_BG3Y_SUB = 0;
 
-	swiCopy(splash2Bitmap, BG_BMP_RAM_SUB(BG3_BMP_SPLASH), splash2BitmapLen/2);
-	swiCopy(splash2Pal, BG_PALETTE_SUB, splash2PalLen/2);
+	swiCopy(crash2Bitmap, BG_BMP_RAM_SUB(BG3_BMP_SPLASH), crash2BitmapLen/2);
+	swiCopy(crash2Pal, BG_PALETTE_SUB, crash2PalLen/2);
 
 }
 
 void graphics_sub_config_pause() {
 
-	//COnfig BGs
+	//config BGs
+	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG3_ACTIVE;
 
-	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG1_ACTIVE;
+	//background 3
+	BGCTRL_SUB[3] = BG_BMP_BASE(BG3_BMP_SPLASH) | (u16) BgSize_B8_256x256;
 
-	//background 1
-	BGCTRL_SUB[1] = BG_32x32 | BG_COLOR_256 | BG_MAP_BASE(BG1_MAP) | BG_TILE_BASE(BG1_TILE) ;
+	//Affine Marix Transformation
+	REG_BG3PA_SUB = 256;
+	REG_BG3PC_SUB = 0;
+	REG_BG3PB_SUB = 0;
+	REG_BG3PD_SUB = 256;
+	REG_BG3X_SUB = 0;
+	REG_BG3Y_SUB = 0;
 
-	swiCopy(backplateTiles, BG_TILE_RAM_SUB(BG1_TILE), backplateTilesLen/2);
-	swiCopy(backplateMap, BG_MAP_RAM_SUB(BG1_MAP), backplateMapLen/2);
-
-
-	swiCopy(backplatePal, BG_PALETTE_SUB+BG1_PALETTE_OFS, backplatePalLen/2);
-
-	memset(overlay_map, EMPTY_TILE, 2*backplateMapLen); // fill with empty tiles
+	swiCopy(pauseBitmap, BG_BMP_RAM_SUB(BG3_BMP_SPLASH), pauseBitmapLen/2);
+	swiCopy(pausePal, BG_PALETTE_SUB, pausePalLen/2);
 
 }
 
 void graphics_sub_config_intro() {
-	//COnfig BGs
+	//config BGs
+	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG3_ACTIVE;
 
-	REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG0_ACTIVE | DISPLAY_BG1_ACTIVE;
+	//background 3
+	BGCTRL_SUB[3] = BG_BMP_BASE(BG3_BMP_SPLASH) | (u16) BgSize_B8_256x256;
 
-	//background 1
-	BGCTRL_SUB[1] = BG_32x32 | BG_COLOR_256 | BG_MAP_BASE(BG1_MAP) | BG_TILE_BASE(BG1_TILE) ;
+	//Affine Marix Transformation
+	REG_BG3PA_SUB = 256;
+	REG_BG3PC_SUB = 0;
+	REG_BG3PB_SUB = 0;
+	REG_BG3PD_SUB = 256;
+	REG_BG3X_SUB = 0;
+	REG_BG3Y_SUB = 0;
 
-	swiCopy(backplateTiles, BG_TILE_RAM_SUB(BG1_TILE), backplateTilesLen/2);
-	swiCopy(backplateMap, BG_MAP_RAM_SUB(BG1_MAP), backplateMapLen/2);
-
-
-	swiCopy(backplatePal, BG_PALETTE_SUB+BG1_PALETTE_OFS, backplatePalLen/2);
-
-	memset(overlay_map, EMPTY_TILE, 2*backplateMapLen); // fill with empty tiles
+	swiCopy(intro2Bitmap, BG_BMP_RAM_SUB(BG3_BMP_SPLASH), intro2BitmapLen/2);
+	swiCopy(intro2Pal, BG_PALETTE_SUB, intro2PalLen/2);
 
 }
 

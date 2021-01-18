@@ -13,6 +13,7 @@
 #include "crash_wall.h"
 #include "rocket.h"
 #include "backplate.h"
+#include "intro.h"
 
 //#define	SPRITE_WIDTH	8
 //#define	SPRITE_HEIGHT	8
@@ -134,8 +135,8 @@ void graphics_main_config_intro() {
 	REG_BG3PB = 0;
 	REG_BG3PD = 256;
 
-	swiCopy(splashBitmap, BG_BMP_RAM(3), splashBitmapLen/2);
-	swiCopy(splashPal, BG_PALETTE, splashPalLen/2);
+	swiCopy(introBitmap, BG_BMP_RAM(3), introBitmapLen/2);
+	swiCopy(introPal, BG_PALETTE, introPalLen/2);
 }
 
 

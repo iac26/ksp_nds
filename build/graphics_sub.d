@@ -69,6 +69,9 @@ graphics_sub.o: \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee2.h \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/horizon.h \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/splash2.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/crash2.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/intro2.h \
+ /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/pause.h \
  /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/positions.h
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/graphics_sub.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/input.h:
@@ -139,4 +142,7 @@ graphics_sub.o: \
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/fusee2.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/horizon.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/splash2.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/crash2.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/intro2.h:
+/Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/build/pause.h:
 /Users/iacopo/Documents/EPFL/4eme/Sys_embarques_microprogrammes/projet/ksp_nds/source/positions.h:

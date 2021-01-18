@@ -1,0 +1,1 @@
+pause.o: pause.s

@@ -6,11 +6,11 @@
 //	backplate, 256x192@8, 
 //	Transparent color : 00,00,00
 //	+ palette 64 entries, not compressed
-//	+ 130 tiles (t|f reduced) not compressed
+//	+ 139 tiles (t|f reduced) not compressed
 //	+ regular map (flat), not compressed, 32x24 
-//	Total size: 128 + 8320 + 1536 = 9984
+//	Total size: 128 + 8896 + 1536 = 10560
 //
-//	Time-stamp: 2021-01-18, 18:43:50
+//	Time-stamp: 2021-01-18, 19:25:50
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.6
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -19,8 +19,8 @@
 #ifndef GRIT_BACKPLATE_H
 #define GRIT_BACKPLATE_H
 
-#define backplateTilesLen 8320
-extern const unsigned char backplateTiles[8320];
+#define backplateTilesLen 8896
+extern const unsigned char backplateTiles[8896];
 
 #define backplateMapLen 1536
 extern const unsigned short backplateMap[768];
